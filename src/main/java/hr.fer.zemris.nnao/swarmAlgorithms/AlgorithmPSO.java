@@ -26,7 +26,7 @@ public class AlgorithmPSO {
         this.maxVelocity = maxVelocity;
     }
 
-    public double[] run(Function<double[], Double> particleEvaluator, BiFunction<Double, Double, Boolean> valueComparator, double desiredError, double desiredPrecizion, long maxIter) {
+    public double[] run(Function<double[], Double> particleEvaluator, BiFunction<Double, Double, Boolean> valueComparator, double desiredError, double desiredPrecision, long maxIter) {
         double[][] particlesPositions = initializePopulation(minPosition, maxPosition);
         double[][] particlesVelocities = initializePopulation(minVelocity, maxVelocity);
         double[] particleValue = new double[populationSize];
@@ -61,7 +61,7 @@ public class AlgorithmPSO {
             }
 
             System.err.println("Iter " + (iter + 1) + " GBV: " + String.format("%.2f", globalBestValue));
-            if (Math.abs(globalBestValue - desiredError) < desiredPrecizion) {
+            if (Math.abs(globalBestValue - desiredError) < desiredPrecision) {
                 break;
             }
 
@@ -96,6 +96,5 @@ public class AlgorithmPSO {
         }
         return array;
     }
-
 
 }
