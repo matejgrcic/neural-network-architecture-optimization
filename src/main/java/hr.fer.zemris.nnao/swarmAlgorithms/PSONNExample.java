@@ -14,31 +14,31 @@ public class PSONNExample {
                         new int[]{5, 3, 1},
                         new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.ReLU, ActivationFunctions.Identity});
         double[] lowerBound = new double[nn.getWeightsNumber()];
-        for (int i = 0; i<lowerBound.length; ++i ){
+        for (int i = 0; i < lowerBound.length; ++i) {
             lowerBound[i] = -5.;
         }
         double[] upperBound = new double[nn.getWeightsNumber()];
-        for (int i = 0; i<lowerBound.length; ++i ){
+        for (int i = 0; i < lowerBound.length; ++i) {
             lowerBound[i] = 5.;
         }
         double[] lowerSpeed = new double[nn.getWeightsNumber()];
-        for (int i = 0; i<lowerBound.length; ++i ){
+        for (int i = 0; i < lowerBound.length; ++i) {
             lowerBound[i] = -2.;
         }
         double[] upperSpeed = new double[nn.getWeightsNumber()];
-        for (int i = 0; i<lowerBound.length; ++i ){
+        for (int i = 0; i < lowerBound.length; ++i) {
             lowerBound[i] = 2.;
         }
 
-        double[] input = new double[] {1.,1.,1.,1.,1.};
+        double[] input = new double[]{1., 1., 1., 1., 1.};
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
 
 
-        AlgorithmPSO pso = new AlgorithmPSO(50, nn.getWeightsNumber(), lowerBound,upperBound,lowerSpeed,upperSpeed);
+        AlgorithmPSO pso = new AlgorithmPSO(50, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
         double[] result = pso.run(t -> {
             nn.setWeights(t);
             return nn.forward(input)[0] - 5.;
-        }, comparator,0., 1E-3, 20);
+        }, comparator, 0., 1E-3, 20);
     }
 }
