@@ -1,19 +1,19 @@
 package hr.fer.zemris.nnao.datasets;
 
-public class DatasetEntry<T, V> {
-    private T[] input;
-    private V[] output;
+public class DatasetEntry{
+    private double[] input;
+    private double[] output;
 
-    public DatasetEntry(T[] input, V[] output) {
+    public DatasetEntry(double[] input, double[] output) {
         this.input = input;
         this.output = output;
     }
 
-    public T[] getInput() {
+    public double[] getInput() {
         return input;
     }
 
-    public V[] getOutput() {
+    public double[] getOutput() {
         return output;
     }
 }

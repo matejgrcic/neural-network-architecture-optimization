@@ -8,7 +8,6 @@ public interface INeuralNetwork {
     double[] forward(double[] input);
     IActivation[] getActivationFunctions();
     int[] getNeuralNetworkArchitecture();
-    double[] getWeights();
     RealMatrix[] getWeightsMatrix();
     void setWeights(double[] weightsArray);
     void setWeights(RealMatrix[] weights);

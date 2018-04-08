@@ -26,7 +26,9 @@ public class AlgorithmPSO {
         this.maxVelocity = maxVelocity;
     }
 
-    public double[] run(Function<double[], Double> particleEvaluator, BiFunction<Double, Double, Boolean> valueComparator, double desiredError, double desiredPrecision, long maxIter) {
+    public double[] run(Function<double[], Double> particleEvaluator,
+                        BiFunction<Double, Double, Boolean> valueComparator,
+                        double desiredError, double desiredPrecision, long maxIter) {
         double[][] particlesPositions = initializePopulation(minPosition, maxPosition);
         double[][] particlesVelocities = initializePopulation(minVelocity, maxVelocity);
         double[] particleValue = new double[populationSize];
