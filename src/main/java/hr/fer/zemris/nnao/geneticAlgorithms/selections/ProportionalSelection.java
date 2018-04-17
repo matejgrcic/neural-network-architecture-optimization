@@ -24,15 +24,18 @@ public class ProportionalSelection implements Selection {
             double desiredFitness = rand.nextDouble() * fitnessSum;
             for (int j = 0; j < population.size(); ++j) {
                 currentTotalFitness += population.get(j).getFitness();
-                if(currentTotalFitness > desiredFitness) {
+                if (currentTotalFitness > desiredFitness) {
                     parents[i] = population.get(j);
+                    System.err.println("Parent " + j);
                     break;
                 }
-                if(parents[i] == null) {
-                    parents[i] = population.get(population.size()-1);
-                }
+            }
+            if (parents[i] == null) {
+                parents[i] = population.get(population.size() - 1);
+                System.err.println("Parent " + (population.size() - 1));
             }
         }
+
 
         return parents;
     }

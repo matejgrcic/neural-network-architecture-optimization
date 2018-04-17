@@ -19,7 +19,7 @@ public class Main {
         Solution s = ga.run(
                 new PopulationGenerator(3, 4, 1, 6, 2, 1),
                 new SimpleCrossover(),
-                new SimpleMutation(0.2, 1, 8),
+                new SimpleMutation(0.2, 1, 6),
                 new ProportionalSelection(),
                 new PSOPopulationEvaluator(dataset,40, 200,0.,1E-3)
         );

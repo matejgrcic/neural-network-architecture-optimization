@@ -62,7 +62,7 @@ public class PSOPopulationEvaluator implements PopulationEvaluator {
         solution.setWeights(result);
         double sum = 0.;
         for (DatasetEntry d : dataset) {
-            sum += nn.forward(d.getInput())[0] - d.getOutput()[0];
+            sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0],2.);
         }
         return sum / dataset.size();
     }
