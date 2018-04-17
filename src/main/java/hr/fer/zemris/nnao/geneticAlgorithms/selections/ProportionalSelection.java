@@ -28,6 +28,9 @@ public class ProportionalSelection implements Selection {
                     parents[i] = population.get(j);
                     break;
                 }
+                if(parents[i] == null) {
+                    parents[i] = population.get(population.size()-1);
+                }
             }
         }
 

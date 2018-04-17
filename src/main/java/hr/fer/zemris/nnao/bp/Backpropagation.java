@@ -62,7 +62,7 @@ public class Backpropagation extends AbstractBackpropagation {
                 mseSum += totalNeuronError;
             }
             trainingMSE = mseSum / trainingSet.size();
-            System.out.println("Iter : "+ currentIteration + " MSError je: " + trainingMSE);
+//            System.out.println("Iter : "+ currentIteration + " MSError je: " + trainingMSE);
 
             RealVector validationMse = new ArrayRealVector(nnArchitecture[nnArchitecture.length-1]);
             for(DatasetEntry entry : validationSet) {
@@ -78,7 +78,7 @@ public class Backpropagation extends AbstractBackpropagation {
                 validationMseSum += totalNeuronError;
             }
             validationMSE = validationMseSum/validationSet.size();
-            System.out.println("Iter : "+ currentIteration + " Validation MSError je: " + validationMSE);
+//            System.out.println("Iter : "+ currentIteration + " Validation MSError je: " + validationMSE);
 
 
             if(Math.abs(trainingMSE-desiredError) < desiredPrecision) {

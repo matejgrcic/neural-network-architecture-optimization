@@ -16,7 +16,7 @@ public class EliminationGA {
 
     private int currentIteration = 0;
     private int maxIterations;
-    private double bestFitness = -Double.MAX_VALUE;
+    private double bestFitness = Double.MAX_VALUE;
     private double desiredFitness;
     private double desiredPrecision;
 
@@ -32,10 +32,9 @@ public class EliminationGA {
         population = populationGenerator.createInitialPopulation(populationSize);
 
         for (Solution solution : population) {
-            double fitness = populationEvaluator.evaluateSolution(solution);
-
+            double fitness = Math.abs(populationEvaluator.evaluateSolution(solution));
             //abs?
-            solution.setFitness(Math.abs(fitness));
+            solution.setFitness(fitness);
 
             if (fitness < bestFitness) {
                 bestFitness = fitness;
@@ -48,7 +47,7 @@ public class EliminationGA {
 
             currentIteration++;
 
-            System.err.println(bestFitness);
+            System.err.println("Iter: "+ currentIteration+ " current best fitness: " +bestFitness);
 
             Collections.sort(population, (s1, s2) -> (int) (s1.getFitness() - s2.getFitness()));
 

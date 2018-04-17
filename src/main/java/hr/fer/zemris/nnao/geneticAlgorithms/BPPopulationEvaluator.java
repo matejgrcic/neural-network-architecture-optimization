@@ -23,7 +23,7 @@ public class BPPopulationEvaluator implements PopulationEvaluator {
     public BPPopulationEvaluator(List<DatasetEntry> dataset, double learningRate, long maxIteration, double desiredError,
                                  double desiredPrecision, int batchSize, double trainingSetPercentage) {
 
-        int splitIndex = (int) trainingSetPercentage * dataset.size();
+        int splitIndex = (int)Math.round(trainingSetPercentage * dataset.size());
         trainingDataset = dataset.subList(0, splitIndex);
         validationDataset = dataset.subList(splitIndex, dataset.size());
         this.learningRate = learningRate;

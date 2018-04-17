@@ -15,15 +15,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<DatasetEntry> dataset = DatasetUtils.createRastring2DDataset();
 
-        EliminationGA ga = new EliminationGA(3, 20, 1E-3, 1E-6);
+        EliminationGA ga = new EliminationGA(30, 100, 1E-3, 1E-6);
         Solution s = ga.run(
-                new PopulationGenerator(3, 5, 1, 8, 2, 1),
+                new PopulationGenerator(3, 4, 1, 6, 2, 1),
                 new SimpleCrossover(),
                 new SimpleMutation(0.2, 1, 8),
                 new ProportionalSelection(),
-                new BPPopulationEvaluator(dataset, 0.2, 10000, 1E-3, 1E-6, 32, 0.8)
+                new PSOPopulationEvaluator(dataset,40, 200,0.,1E-3)
         );
-
-
     }
 }
