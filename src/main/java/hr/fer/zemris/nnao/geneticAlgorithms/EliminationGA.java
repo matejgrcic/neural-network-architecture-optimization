@@ -47,6 +47,13 @@ public class EliminationGA {
 
             currentIteration++;
 
+            double avgFitness = 0.;
+            for (Solution solution : population) {
+                avgFitness += solution.getFitness();
+            }
+
+            System.err.println("Average fitness: " + (avgFitness/population.size()));
+
             System.err.println("Iter: "+ currentIteration+ " current best fitness: " +bestFitness);
 
             Collections.sort(population, (s1, s2) -> (int) (s1.getFitness() - s2.getFitness()));
@@ -55,6 +62,7 @@ public class EliminationGA {
             Solution child = crossover.doCrossover(parents[0], parents[1]);
             child = mutation.mutate(child);
             double childFitness = Math.abs(populationEvaluator.evaluateSolution(child));
+            System.err.println("Child fitness: " + childFitness);
             child.setFitness(childFitness);
 
             if (population.get(populationSize - 1).getFitness() > child.getFitness()) {
