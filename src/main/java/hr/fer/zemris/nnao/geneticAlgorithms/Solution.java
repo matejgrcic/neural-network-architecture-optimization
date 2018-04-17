@@ -11,7 +11,7 @@ public class Solution {
     private int numberOfLayers;
     private int[] architecture;
     private double[] weights;
-    private Double fitness;
+    private double fitness;
 
     public Solution(IActivation[] activations, int numberOfLayers, int[] architecture, double[] weights) {
         this.activations = activations;
@@ -22,7 +22,6 @@ public class Solution {
 
     public void setWeights(double[] weights) {
         this.weights = weights;
-        fitness = null;
     }
 
     public IActivation[] getActivations() {
@@ -45,16 +44,20 @@ public class Solution {
         return fitness;
     }
 
-    public String serializeSolution() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(numberOfLayers+",");
-        for(int layer: architecture) {
-            sb.append(layer + ",");
-        }
-        for(IActivation activation: activations) {
-            sb.append(activation.getStringRepresentation() + ",");
-        }
-        String result = sb.toString();
-        return result.substring(0,result.length()-1);
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
     }
+
+//    public String serializeSolution() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(numberOfLayers+",");
+//        for(int layer: architecture) {
+//            sb.append(layer + ",");
+//        }
+//        for(IActivation activation: activations) {
+//            sb.append(activation.getStringRepresentation() + ",");
+//        }
+//        String result = sb.toString();
+//        return result.substring(0,result.length()-1);
+//    }
 }

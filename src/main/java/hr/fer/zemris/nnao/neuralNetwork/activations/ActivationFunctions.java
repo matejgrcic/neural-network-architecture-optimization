@@ -20,6 +20,11 @@ public class ActivationFunctions {
         public String getStringRepresentation() {
             return IdentityStringRepresentation;
         }
+
+        @Override
+        public String toString() {
+            return "Identity";
+        }
     };
 
     public static IActivation ReLU = new IActivation() {
@@ -36,6 +41,11 @@ public class ActivationFunctions {
         @Override
         public String getStringRepresentation() {
             return ReLuStringRepresentation;
+        }
+
+        @Override
+        public String toString() {
+            return "ReLU";
         }
     };
 
@@ -54,5 +64,15 @@ public class ActivationFunctions {
         public String getStringRepresentation() {
             return SigmoidStringRepresentation;
         }
+
+        @Override
+        public String toString() {
+            return "Sigmoid";
+        }
     };
+
+    public static IActivation[] allActivations = new IActivation[]{
+            ActivationFunctions.Identity, ActivationFunctions.ReLU, ActivationFunctions.Sigmoid};
+
+
 }

@@ -24,9 +24,6 @@ public class NeuralNetwork implements INeuralNetwork {
         this.architecture = architecture;
     }
 
-    public NeuralNetwork() {
-    }
-
     // vraca output
     public double[] forward(double[] input) {
         outputOfLayers = new double[architecture.length][];
