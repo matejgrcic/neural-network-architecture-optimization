@@ -8,17 +8,16 @@ import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.ProportionalSelection;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
-import hr.fer.zemris.nnao.neuralNetwork.activations.IActivation;
 
 import java.io.IOException;
 import java.util.List;
 
-public class Main {
+public class Main2 {
 
     public static void main(String[] args) throws IOException {
         List<DatasetEntry> dataset = DatasetUtils.createRastring2DDataset();
 
-        EliminationGA ga = new EliminationGA(10, 1000, 0., 1E-3);
+        GenerationGA ga = new GenerationGA(5, 1000, 0., 1E-3);
         Solution s = ga.run(
                 new PopulationGenerator(3, 5, 6, 15, 2, 1),
                 new SimpleCrossover(),
