@@ -4,6 +4,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.Crossover;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.Mutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.Selection;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,29 +30,28 @@ public class EliminationGA {
 
     public Solution run(IPopulationGenerator populationGenerator, Crossover crossover, Mutation mutation, Selection selection, PopulationEvaluator populationEvaluator) {
 
-        population = populationGenerator.createInitialPopulation(populationSize);
+//        population = populationGenerator.createInitialPopulation(populationSize);
+        fillInitialPopulation(populationGenerator,populationEvaluator);
 
-        for (Solution solution : population) {
-            double fitness = Math.abs(populationEvaluator.evaluateSolution(solution));
-            //abs?
-            solution.setFitness(fitness);
-            System.err.println("Fitness "+fitness);
-            if (fitness < bestFitness) {
-                bestFitness = fitness;
-                bestSolution = solution;
-            }
-        }
+//        for (Solution solution : population) {
+//            double fitness = Math.abs(populationEvaluator.evaluateSolution(solution));
+//            //abs?
+//            solution.setFitness(fitness);
+//            System.err.println("Fitness "+fitness);
+//            if (fitness < bestFitness) {
+//                bestFitness = fitness;
+//                bestSolution = solution;
+//            }
+//        }
 
 
         while (Math.abs(bestFitness - desiredFitness) > desiredPrecision &&  currentIteration < maxIterations) {
 
             currentIteration++;
-
             double avgFitness = 0.;
             for (Solution solution : population) {
                 avgFitness += solution.getFitness();
             }
-
             System.err.println("Average fitness: " + (avgFitness/population.size()));
 
             System.err.println("Iter: "+ currentIteration+ " current best fitness: " +bestFitness);
@@ -76,7 +76,31 @@ public class EliminationGA {
             }
         }
 
-
         return bestSolution;
+    }
+
+    private void fillInitialPopulation(IPopulationGenerator populationGenerator, PopulationEvaluator populationEvaluator) {
+        population = new ArrayList<>(populationSize);
+        int counter = 0;
+
+        int trys = 0;
+        while(counter < populationSize){
+            ++ trys;
+
+            Solution solution = populationGenerator.createIndividual();
+            double fitness = populationEvaluator.evaluateSolution(solution);
+            System.out.println(trys + " "+fitness +" "+ counter);
+            if(Double.isNaN(fitness)) {
+                continue;
+            }
+            solution.setFitness(fitness);
+            population.add(solution);
+
+            if (fitness < bestFitness) {
+                bestFitness = fitness;
+                bestSolution = solution;
+            }
+            counter++;
+        }
     }
 }

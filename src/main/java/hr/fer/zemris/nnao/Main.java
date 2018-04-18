@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<DatasetEntry> dataset = DatasetUtils.createSinXDataset();
 
-        EliminationGA ga = new EliminationGA(30, 1000, 0., 1E-3);
+        EliminationGA ga = new EliminationGA(5, 1000, 0., 1E-3);
         Solution s = ga.run(
                 new PopulationGenerator(3, 4, 3, 10, 1, 1),
                 new SimpleCrossover(),

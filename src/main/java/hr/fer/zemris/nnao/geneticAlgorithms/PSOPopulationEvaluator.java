@@ -7,6 +7,7 @@ import hr.fer.zemris.nnao.swarmAlgorithms.AlgorithmPSO;
 
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class PSOPopulationEvaluator implements PopulationEvaluator {
 
@@ -46,23 +47,23 @@ public class PSOPopulationEvaluator implements PopulationEvaluator {
         }
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
-
-
-        AlgorithmPSO pso = new AlgorithmPSO(populationSize, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
-        double[] result = pso.run(t -> {
+        Function<double[], Double> particleEvaluator = t -> {
             nn.setWeights(t);
             double sum = 0.;
             for (DatasetEntry d : dataset) {
-                sum += Math.abs(nn.forward(d.getInput())[0] - d.getOutput()[0]);
+                sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0], 2.);
             }
-            return sum/dataset.size();
-        }, comparator, desiredError, desiredPrecision, maxIterations);
+            return sum / dataset.size();
+        };
+
+        AlgorithmPSO pso = new AlgorithmPSO(populationSize, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
+        double[] result = pso.run(particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations);
 
         nn.setWeights(result);
         solution.setWeights(result);
         double sum = 0.;
         for (DatasetEntry d : dataset) {
-            sum += Math.abs(nn.forward(d.getInput())[0] - d.getOutput()[0]);
+            sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0], 2.);
         }
         return sum / dataset.size();
     }

@@ -16,15 +16,15 @@ public class PSONNExample {
     public static void main(String[] args) throws IOException{
         NeuralNetwork nn =
                 new NeuralNetwork(
-                        new int[]{1, 10, 5, 1},
+                        new int[]{2, 10, 5, 1},
                         new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.ReLU,ActivationFunctions.ReLU , ActivationFunctions.Identity});
         double[] lowerBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerBound[i] = -10;
+            lowerBound[i] = -5.12;
         }
         double[] upperBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerBound[i] = 10.;
+            lowerBound[i] = 5.12;
         }
         double[] lowerSpeed = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
@@ -35,7 +35,7 @@ public class PSONNExample {
             lowerBound[i] = 1.;
         }
 
-        List<DatasetEntry> data = DatasetUtils.createSinXDataset();
+        List<DatasetEntry> data = DatasetUtils.createRastring2DDataset();
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
 
@@ -48,6 +48,6 @@ public class PSONNExample {
                 sum += nn.forward(d.getInput())[0] - d.getOutput()[0];
             }
             return sum;
-        }, comparator, 0., 1E-3, 200);
+        }, comparator, 0., 1E-3, 10);
     }
 }
