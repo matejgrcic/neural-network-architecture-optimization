@@ -62,10 +62,10 @@ public class EliminationGA {
             Solution child = crossover.doCrossover(parents[0], parents[1]);
             child = mutation.mutate(child);
             double childFitness = Math.abs(populationEvaluator.evaluateSolution(child));
-            System.err.println("Child fitness: " + childFitness);
+            System.err.println("Child fitness: " + childFitness+ " Architecture: "+ child.toString());
             child.setFitness(childFitness);
 
-            if (population.get(populationSize - 1).getFitness() > child.getFitness()) {
+            if (child.getFitness()<population.get(populationSize - 1).getFitness()) {
                 population.remove(populationSize - 1);
                 population.add(child);
             }
@@ -83,13 +83,9 @@ public class EliminationGA {
         population = new ArrayList<>(populationSize);
         int counter = 0;
 
-        int trys = 0;
         while(counter < populationSize){
-            ++ trys;
-
             Solution solution = populationGenerator.createIndividual();
             double fitness = populationEvaluator.evaluateSolution(solution);
-            System.out.println(trys + " "+fitness +" "+ counter);
             if(Double.isNaN(fitness)) {
                 continue;
             }

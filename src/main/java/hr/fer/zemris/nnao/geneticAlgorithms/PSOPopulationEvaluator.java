@@ -16,13 +16,15 @@ public class PSOPopulationEvaluator implements PopulationEvaluator {
     private int maxIterations;
     private double desiredError;
     private double desiredPrecision;
+    private int maxTrys;
 
-    public PSOPopulationEvaluator(List<DatasetEntry> dataset, int populationSize, int maxIterations, double desiredError, double desiredPrecision) {
+    public PSOPopulationEvaluator(List<DatasetEntry> dataset, int populationSize, int maxIterations, double desiredError, double desiredPrecision, int maxTrys) {
         this.dataset = dataset;
         this.populationSize = populationSize;
         this.maxIterations = maxIterations;
         this.desiredError = desiredError;
         this.desiredPrecision = desiredPrecision;
+        this.maxTrys = maxTrys;
     }
 
     @Override
@@ -31,19 +33,19 @@ public class PSOPopulationEvaluator implements PopulationEvaluator {
         nn.setWeights(solution.getWeights());
         double[] lowerBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerBound[i] = -10;
+            lowerBound[i] = -5.12;
         }
         double[] upperBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerBound[i] = 10.;
+            upperBound[i] = 5.12;
         }
         double[] lowerSpeed = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerBound[i] = -1.;
+            lowerSpeed[i] = -2.;
         }
         double[] upperSpeed = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerBound[i] = 1.;
+            upperSpeed[i] = 2.;
         }
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
@@ -56,15 +58,24 @@ public class PSOPopulationEvaluator implements PopulationEvaluator {
             return sum / dataset.size();
         };
 
-        AlgorithmPSO pso = new AlgorithmPSO(populationSize, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
-        double[] result = pso.run(particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations);
+        double best = Double.MAX_VALUE;
+        for(int i = 0; i<maxTrys; ++i) {
+            AlgorithmPSO pso = new AlgorithmPSO(populationSize, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
+            double[] result = pso.run(particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations);
 
-        nn.setWeights(result);
-        solution.setWeights(result);
-        double sum = 0.;
-        for (DatasetEntry d : dataset) {
-            sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0], 2.);
+            nn.setWeights(result);
+            solution.setWeights(result);
+            double sum = 0.;
+            for (DatasetEntry d : dataset) {
+                sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0], 2.);
+            }
+            double x = sum / dataset.size();
+            if (Math.abs(x) < best) {
+                best = Math.abs(x);
+
+            }
         }
-        return sum / dataset.size();
+        System.err.println("Best mse: " + best);
+        return best;
     }
 }

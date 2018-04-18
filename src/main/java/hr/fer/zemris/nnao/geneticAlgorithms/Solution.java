@@ -48,16 +48,12 @@ public class Solution {
         this.fitness = fitness;
     }
 
-//    public String serializeSolution() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(numberOfLayers+",");
-//        for(int layer: architecture) {
-//            sb.append(layer + ",");
-//        }
-//        for(IActivation activation: activations) {
-//            sb.append(activation.getStringRepresentation() + ",");
-//        }
-//        String result = sb.toString();
-//        return result.substring(0,result.length()-1);
-//    }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(numberOfLayers+": ");
+        for(int i = 0; i<numberOfLayers; ++i) {
+            sb.append(architecture[i]+ " "+activations[i]+"/");
+        }
+        return sb.toString();
+    }
 }

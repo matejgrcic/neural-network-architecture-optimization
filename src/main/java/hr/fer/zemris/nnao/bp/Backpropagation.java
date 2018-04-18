@@ -62,10 +62,10 @@ public class Backpropagation extends AbstractBackpropagation {
                 mseSum += totalNeuronError;
             }
             trainingMSE = mseSum / trainingSet.size();
-//            System.out.println("Iter : "+ currentIteration + " MSError je: " + trainingMSE);
+//            System.out.println("Iter : " + currentIteration + " MSError je: " + trainingMSE);
 
-            RealVector validationMse = new ArrayRealVector(nnArchitecture[nnArchitecture.length-1]);
-            for(DatasetEntry entry : validationSet) {
+            RealVector validationMse = new ArrayRealVector(nnArchitecture[nnArchitecture.length - 1]);
+            for (DatasetEntry entry : validationSet) {
                 RealVector output = new ArrayRealVector(neuralNetwork.forward(entry.getInput()));
                 RealVector expectedOutput = new ArrayRealVector(entry.getOutput());
                 RealVector error = output.subtract(expectedOutput);
@@ -77,17 +77,25 @@ public class Backpropagation extends AbstractBackpropagation {
             for (double totalNeuronError : totalErrorByNeuron.toArray()) {
                 validationMseSum += totalNeuronError;
             }
-            validationMSE = validationMseSum/validationSet.size();
-//            System.out.println("Iter : "+ currentIteration + " Validation MSError je: " + validationMSE);
+            double lastIterValMSE = validationMSE;
+            validationMSE = validationMseSum / validationSet.size();
+//            System.out.println("Iter : " + currentIteration + " Validation MSError je: " + validationMSE);
+            if (lastIterValMSE <= validationMSE && currentIteration > maxIteration / 2) {
+                break;
+            }
 
+            if(Double.isNaN(trainingMSE)){
+                break;
+            }
 
-            if(Math.abs(trainingMSE-desiredError) < desiredPrecision) {
+            if (Math.abs(trainingMSE - desiredError) < desiredPrecision) {
                 break;
             }
 
             ++currentIteration;
         }
-        return validationMSE;
+        System.out.println("MSError je: " + trainingMSE);
+        return trainingMSE;
     }
 
     private double[] doBackpropagation(INeuralNetwork neuralNetwork, RealMatrix outputDeltaMatrix, RealMatrix[] allLayerOutputs) {

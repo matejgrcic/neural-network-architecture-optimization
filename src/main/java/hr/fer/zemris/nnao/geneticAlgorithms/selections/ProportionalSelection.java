@@ -26,16 +26,15 @@ public class ProportionalSelection implements Selection {
                 currentTotalFitness += population.get(j).getFitness();
                 if (currentTotalFitness > desiredFitness) {
                     parents[i] = population.get(j);
-                    System.err.println("Parent " + j);
                     break;
                 }
             }
             if (parents[i] == null) {
                 parents[i] = population.get(population.size() - 1);
-                System.err.println("Parent " + (population.size() - 1));
             }
         }
 
+        System.err.println("Parents: " + parents[0].toString()+ " "+ parents[1].toString());
 
         return parents;
     }

@@ -15,16 +15,19 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        List<DatasetEntry> dataset = DatasetUtils.createSinXDataset();
+        List<DatasetEntry> dataset = DatasetUtils.createRastring2DDataset();
 
         EliminationGA ga = new EliminationGA(5, 1000, 0., 1E-3);
         Solution s = ga.run(
-                new PopulationGenerator(3, 4, 3, 10, 1, 1),
+                new PopulationGenerator(3, 5, 6, 15, 2, 1),
                 new SimpleCrossover(),
-                new SimpleMutation(0.3, 1, 6),
+                new SimpleMutation(0.4, 1, 6),
                 new ProportionalSelection(),
-                new BPPopulationEvaluator(dataset,1E-7,10_000,0.,1e-3,10,0.8)
+                new PSOPopulationEvaluator(dataset,50, 70,0.,1E-3, 3)
+//                new BPPopulationEvaluator(dataset,1E-5,50_000,0.,1e-3,30,0.9)
         );
+
+//        new BPPopulationEvaluator(dataset,1E-7,10_000,0.,1e-3,10,0.8)
 
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i<s.getNumberOfLayers(); ++i){

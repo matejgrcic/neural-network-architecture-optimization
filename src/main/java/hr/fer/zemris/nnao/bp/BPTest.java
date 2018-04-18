@@ -1,27 +1,29 @@
 package hr.fer.zemris.nnao.bp;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
+import hr.fer.zemris.nnao.datasets.DatasetUtils;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.activations.ActivationFunctions;
 import hr.fer.zemris.nnao.neuralNetwork.activations.IActivation;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class BPTest {
-
-    public static void main(String[] args ) {
+    // PROOF OF CONCEPT!
+    //OVO DODE DO mse od 98 na training setu
+    public static void main(String[] args ) throws IOException{
         NeuralNetwork nn = new NeuralNetwork(
-                new int[] {3, 2,1},
-                new IActivation[] {ActivationFunctions.Identity, ActivationFunctions.Sigmoid, ActivationFunctions.ReLU}
+                new int[] {2, 12,1},
+                new IActivation[] {ActivationFunctions.Identity,ActivationFunctions.ReLU, ActivationFunctions.ReLU}
         );
 
-        double[] input = new double[] {1. ,2., 3.};
-        double[] output = new double[] {2.};
+        List<DatasetEntry> dataset = DatasetUtils.createRastring2DDataset();
 
-        DatasetEntry entry = new DatasetEntry(input,output);
 
-        Backpropagation bp = new Backpropagation(Arrays.asList(entry,entry,entry,entry,entry,entry, entry), Arrays.asList(entry),0.1,
-                10, 0.1, 0.1 , nn, 3);
+        Backpropagation bp = new Backpropagation(dataset.subList(0,260),dataset.subList(260,dataset.size()),1E-5,
+                100_000, 0., 0.1 , nn, 30);
         bp.run();
     }
 }
