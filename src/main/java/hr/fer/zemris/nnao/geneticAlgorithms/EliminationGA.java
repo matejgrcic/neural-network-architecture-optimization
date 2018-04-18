@@ -35,7 +35,7 @@ public class EliminationGA {
             double fitness = Math.abs(populationEvaluator.evaluateSolution(solution));
             //abs?
             solution.setFitness(fitness);
-
+            System.err.println("Fitness "+fitness);
             if (fitness < bestFitness) {
                 bestFitness = fitness;
                 bestSolution = solution;

@@ -16,7 +16,7 @@ public class PSONNExample {
     public static void main(String[] args) throws IOException{
         NeuralNetwork nn =
                 new NeuralNetwork(
-                        new int[]{2, 10, 5, 1},
+                        new int[]{1, 10, 5, 1},
                         new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.ReLU,ActivationFunctions.ReLU , ActivationFunctions.Identity});
         double[] lowerBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
@@ -35,7 +35,7 @@ public class PSONNExample {
             lowerBound[i] = 1.;
         }
 
-        List<DatasetEntry> data = DatasetUtils.createRastring2DDataset();
+        List<DatasetEntry> data = DatasetUtils.createSinXDataset();
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
 

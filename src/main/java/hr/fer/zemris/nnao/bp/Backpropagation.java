@@ -87,7 +87,7 @@ public class Backpropagation extends AbstractBackpropagation {
 
             ++currentIteration;
         }
-        return 0.;
+        return validationMSE;
     }
 
     private double[] doBackpropagation(INeuralNetwork neuralNetwork, RealMatrix outputDeltaMatrix, RealMatrix[] allLayerOutputs) {

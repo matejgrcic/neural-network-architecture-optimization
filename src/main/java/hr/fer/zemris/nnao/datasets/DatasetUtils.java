@@ -32,4 +32,13 @@ public class DatasetUtils {
         };
         return createDataset(Paths.get("./rastring2D.csv"), ",", creator);
     }
+
+    public static List<DatasetEntry> createSinXDataset() throws IOException {
+        Function<String[], DatasetEntry> creator = u -> {
+            double[] input = new double[]{Double.parseDouble(u[0])};
+            double[] output = new double[]{Double.parseDouble(u[1])};
+            return new DatasetEntry(input, output);
+        };
+        return createDataset(Paths.get("./sinx.csv"), ",", creator);
+    }
 }
