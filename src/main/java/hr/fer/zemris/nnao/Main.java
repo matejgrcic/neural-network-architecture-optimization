@@ -9,6 +9,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
+import hr.fer.zemris.nnao.observers.ConsoleLoggerObserver;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,6 +40,9 @@ public class Main {
         List<DatasetEntry> dataset = DatasetUtils.createRastring2DDataset();
 
         AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
+
+        ga.addObserver(new ConsoleLoggerObserver());
+
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
@@ -48,6 +52,8 @@ public class Main {
 //                new BPPopulationEvaluator(dataset,1E-5,50_000,0.,1e-3,30,0.9)
         );
 
+
+
 //        new BPPopulationEvaluator(dataset,1E-7,10_000,0.,1e-3,10,0.8)
 
         StringBuilder sb = new StringBuilder();
@@ -55,7 +61,7 @@ public class Main {
             sb.append(s.getArchitecture()[i]);
             sb.append(s.getActivations()[i] + " ");
         }
-        System.out.println(sb.toString() + "Error: " + s.getFitness());
+//        System.out.println(sb.toString() + "Error: " + s.getFitness());
 
         NeuralNetwork nn = new NeuralNetwork(s.getArchitecture(), s.getActivations());
         nn.setWeights(s.getWeights());

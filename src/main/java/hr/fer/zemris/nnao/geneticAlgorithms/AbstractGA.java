@@ -5,6 +5,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.IPopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.Mutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.Selection;
+import hr.fer.zemris.nnao.observers.GAObserver;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,6 +25,7 @@ public abstract class AbstractGA {
 
     private double desiredFitness;
     private double desiredPrecision;
+    private List<GAObserver> observers = new ArrayList<>();
 
     public AbstractGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision) {
         this.populationSize = populationSize;
@@ -41,13 +43,15 @@ public abstract class AbstractGA {
             currentIteration++;
 
             calculateAverageFitness();
-            System.err.println("Average fitness: " + averageFitness);
+//            System.err.println("Average fitness: " + averageFitness);
 
-            System.err.println("Iter: " + currentIteration + " current best fitness: " + bestFitness);
+//            System.err.println("Iter: " + currentIteration + " current best fitness: " + bestFitness);
 
             Collections.sort(population, (s1, s2) -> (int) (s1.getFitness() - s2.getFitness()));
 
             createNextPopulation(selection, crossover, mutation, populationEvaluator);
+
+            notifyObservers();
         }
 
         return bestSolution;
@@ -83,5 +87,41 @@ public abstract class AbstractGA {
             }
             counter++;
         }
+    }
+
+    public void addObserver(GAObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(GAObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        new ArrayList<>(observers).forEach(t -> t.update(this));
+    }
+
+    public int getPopulationSize() {
+        return populationSize;
+    }
+
+    public Solution getBestSolution() {
+        return bestSolution;
+    }
+
+    public int getCurrentIteration() {
+        return currentIteration;
+    }
+
+    public int getMaxIterations() {
+        return maxIterations;
+    }
+
+    public double getBestFitness() {
+        return bestFitness;
+    }
+
+    public double getAverageFitness() {
+        return averageFitness;
     }
 }

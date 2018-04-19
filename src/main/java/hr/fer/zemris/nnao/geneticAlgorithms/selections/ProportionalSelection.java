@@ -34,7 +34,7 @@ public class ProportionalSelection implements Selection {
             }
         }
 
-        System.err.println("Parents: " + parents[0].toString()+ " "+ parents[1].toString());
+//        System.err.println("Parents: " + parents[0].toString()+ " "+ parents[1].toString());
 
         return parents;
     }

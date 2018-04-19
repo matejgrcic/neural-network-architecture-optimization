@@ -76,7 +76,7 @@ public class PSOPopulationEvaluator implements PopulationEvaluator {
 
             }
         }
-        System.err.println("Best mse: " + best);
+//        System.err.println("Best mse: " + best);
         return best;
     }
 }

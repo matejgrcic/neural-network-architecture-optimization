@@ -29,7 +29,7 @@ public class SimpleMutation implements Mutation {
             return solution;
         }
 
-        System.err.println("Mutation happened.");
+//        System.err.println("Mutation happened.");
 
         Solution mutated = null;
         int index = rand.nextInt(solution.getNumberOfLayers() * 2);

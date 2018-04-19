@@ -52,7 +52,7 @@ public class Solution {
     public String toString() {
         StringBuilder sb = new StringBuilder(numberOfLayers+": ");
         for(int i = 0; i<numberOfLayers; ++i) {
-            sb.append(architecture[i]+ " "+activations[i]+"/");
+            sb.append("["+architecture[i]+ "/"+activations[i]+"] / ");
         }
         return sb.toString();
     }

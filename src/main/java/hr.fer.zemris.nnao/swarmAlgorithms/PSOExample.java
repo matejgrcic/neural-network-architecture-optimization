@@ -21,6 +21,6 @@ public class PSOExample {
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
 
         double[] result = pso.run(evaluator, comparator, 0., 1E-3, 100);
-        System.out.println("Best solution x: " + String.format("%.3f", result[0]) + " y: " + String.format("%.3f", result[1]));
+//        System.out.println("Best solution x: " + String.format("%.3f", result[0]) + " y: " + String.format("%.3f", result[1]));
     }
 }

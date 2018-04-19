@@ -94,7 +94,7 @@ public class Backpropagation extends AbstractBackpropagation {
 
             ++currentIteration;
         }
-        System.out.println("MSError je: " + trainingMSE);
+//        System.out.println("MSError je: " + trainingMSE);
         return trainingMSE;
     }
 
