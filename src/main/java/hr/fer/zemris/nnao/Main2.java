@@ -47,23 +47,6 @@ public class Main2 {
 
 
 
-//        List<DatasetEntry> dataset = DatasetUtils.createSinXDataset();
-//
-//        EliminationGA ga = new EliminationGA(30, 1000, 0., 1E-3);
-//        Solution s = ga.run(
-//                new PopulationGenerator(3, 5, 1, 7, 1, 1),
-//                new SimpleCrossover(),
-//                new SimpleMutation(0.3, 1, 6),
-//                new ProportionalSelection(),
-//                new BPPopulationEvaluator(dataset,1E-7,1000,0.,1e-3,10,0.8)
-//        );
-//
-//        StringBuilder sb = new StringBuilder();
-//        for(int i = 0; i<s.getNumberOfLayers(); ++i){
-//            sb.append(s.getArchitecture()[i]);
-//            sb.append(s.getActivations()[i]+ " ");
-//        }
-//        System.out.println(sb.toString() + "Error: "+ s.getFitness());
     }
 
 //    new PSOPopulationEvaluator(dataset,40, 200,0.,1E-3)
