@@ -1,5 +1,7 @@
-package hr.fer.zemris.nnao.geneticAlgorithms;
+package hr.fer.zemris.nnao.geneticAlgorithms.generators;
 
+import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
+import hr.fer.zemris.nnao.geneticAlgorithms.generators.IPopulationGenerator;
 import hr.fer.zemris.nnao.neuralNetwork.activations.ActivationFunctions;
 import hr.fer.zemris.nnao.neuralNetwork.activations.IActivation;
 

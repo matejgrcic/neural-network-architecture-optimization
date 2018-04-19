@@ -1,11 +1,11 @@
-package hr.fer.zemris.nnao.geneticAlgorithms;
+package hr.fer.zemris.nnao.geneticAlgorithms.evaluators;
 
 import hr.fer.zemris.nnao.bp.Backpropagation;
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
-import hr.fer.zemris.nnao.neuralNetwork.NNUtil;
+import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
+import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PopulationEvaluator;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BPPopulationEvaluator implements PopulationEvaluator {

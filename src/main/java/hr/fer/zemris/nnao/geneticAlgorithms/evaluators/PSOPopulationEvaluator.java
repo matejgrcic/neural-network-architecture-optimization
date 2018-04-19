@@ -1,7 +1,8 @@
-package hr.fer.zemris.nnao.geneticAlgorithms;
+package hr.fer.zemris.nnao.geneticAlgorithms.evaluators;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
-import hr.fer.zemris.nnao.datasets.DatasetUtils;
+import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
+import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PopulationEvaluator;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.swarmAlgorithms.AlgorithmPSO;
 
