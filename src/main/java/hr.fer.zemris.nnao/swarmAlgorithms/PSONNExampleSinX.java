@@ -16,29 +16,28 @@ public class PSONNExampleSinX {
     public static void main(String[] args) throws IOException{
         NeuralNetwork nn =
                 new NeuralNetwork(
-                        new int[]{1, 7,3, 1},
-                        new IActivation[]{ActivationFunctions.Sigmoid,ActivationFunctions.Sigmoid,ActivationFunctions.Sigmoid , ActivationFunctions.Sigmoid});
+                        new int[]{1, 10,5, 1},
+                        new IActivation[]{ActivationFunctions.Identity,ActivationFunctions.ReLU,ActivationFunctions.Sigmoid, ActivationFunctions.Identity});
         double[] lowerBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerBound[i] = -1;
+            lowerBound[i] = -5.12;
         }
         double[] upperBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            upperBound[i] = -1;
+            upperBound[i] = 5.12;
         }
         double[] lowerSpeed = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            lowerSpeed[i] = -0.1;
+            lowerSpeed[i] = -2.;
         }
         double[] upperSpeed = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
-            upperSpeed[i] = 0.1;
+            upperSpeed[i] = 2.;
         }
 
-        List<DatasetEntry> data = DatasetUtils.createSinXDataset();
+        List<DatasetEntry> data = DatasetUtils.createSinXDatasetNormalized();
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
-
 
         AlgorithmPSO pso = new AlgorithmPSO(50, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
         double[] result = pso.run(t -> {

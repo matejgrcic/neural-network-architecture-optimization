@@ -16,7 +16,9 @@ public class DatasetGeneratorLinear {
 
         try (OutputStream os = Files.newOutputStream(Paths.get("./linear.csv"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
             for (double i = minValue; i <= maxValue; i += delta) {
-                String result = String.format("%.4f,%.4f\n", i, i);
+                String x = String.format("%.4f", i).replaceAll(",",".");
+
+                String result = String.format("%s,%s\n", x, x);
                 os.write(result.getBytes());
 
 
