@@ -28,6 +28,7 @@ public class Main2 {
     public static final double desiredError = 0.;
     public static final double desiredFitness = 0.;
     public static final double desiredPrecision = 1E-3;
+    public static final boolean selectDuplicates = false;
 
     public static final int PSOPopulationSize = 50;
     public static final int PSOMaxIter = 70;
@@ -41,7 +42,7 @@ public class Main2 {
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
                 new SimpleMutation(mutationProb, minLayerSize, maxLayerSize),
-                new TournamentSelection(numberOfSelectionCandidates),
+                new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
                 new PSOPopulationEvaluator(dataset, PSOPopulationSize, PSOMaxIter, desiredError, desiredPrecision, PSOMaxTrys)
 //                new BPPopulationEvaluator(dataset,1E-5,50_000,0.,1e-3,30,0.9)
         );

@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.calculateNumberOfWeights;
-import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.createRandomArray;
+import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.*;
 
 public class SimpleCrossover implements Crossover {
 
@@ -44,7 +43,7 @@ public class SimpleCrossover implements Crossover {
             architecture[i] = architectureArray[i];
         }
 
-        double[] weights = createRandomArray(calculateNumberOfWeights(architecture));
+        double[] weights = getWeights(calculateNumberOfWeights(architecture),createWeightMatrices(architecture));
         return new Solution(activationsArray,architecture.length,architecture,weights);
     }
 }

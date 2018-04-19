@@ -41,4 +41,22 @@ public class DatasetUtils {
         };
         return createDataset(Paths.get("./sinx.csv"), ",", creator);
     }
+
+    public static List<DatasetEntry> createSinXDatasetNormalized() throws IOException {
+        Function<String[], DatasetEntry> creator = u -> {
+            double[] input = new double[]{Double.parseDouble(u[0])};
+            double[] output = new double[]{Double.parseDouble(u[1])};
+            return new DatasetEntry(input, output);
+        };
+        return createDataset(Paths.get("./sinxN01.csv"), ",", creator);
+    }
+
+    public static List<DatasetEntry> createLinear() throws IOException {
+        Function<String[], DatasetEntry> creator = u -> {
+            double[] input = new double[]{Double.parseDouble(u[0])};
+            double[] output = new double[]{Double.parseDouble(u[1])};
+            return new DatasetEntry(input, output);
+        };
+        return createDataset(Paths.get("./linear.csv"), ",", creator);
+    }
 }

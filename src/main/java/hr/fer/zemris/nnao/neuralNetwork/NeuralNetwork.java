@@ -16,7 +16,7 @@ public class NeuralNetwork implements INeuralNetwork {
     private double[][] outputOfLayers;
 
     public NeuralNetwork(int[] architecture, IActivation[] activationFunctions) {
-        weights = createWeightMatrices(architecture, createRandomArray(calculateNumberOfWeights(architecture)));
+        weights = createWeightMatrices(architecture);
         for (RealMatrix matrix : weights) {
             weightsNumber += matrix.getColumnDimension() * matrix.getRowDimension();
         }

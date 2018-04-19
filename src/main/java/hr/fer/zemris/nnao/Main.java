@@ -4,6 +4,7 @@ import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.datasets.DatasetUtils;
 import hr.fer.zemris.nnao.geneticAlgorithms.*;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
+import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.BPPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
@@ -29,11 +30,11 @@ public class Main {
     public static final double desiredError = 0.;
     public static final double desiredFitness = 0.;
     public static final double desiredPrecision = 1E-3;
+    public static final boolean selectDuplicates = false;
 
     public static final int PSOPopulationSize = 50;
     public static final int PSOMaxIter = 70;
     public static final int PSOMaxTrys = 3;
-
 
     public static void main(String[] args) throws IOException {
 
@@ -47,9 +48,9 @@ public class Main {
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
                 new SimpleMutation(mutationProb, minLayerSize, maxLayerSize),
-                new TournamentSelection(numberOfSelectionCandidates),
-                new PSOPopulationEvaluator(dataset, PSOPopulationSize, PSOMaxIter, desiredError, desiredPrecision, PSOMaxTrys)
-//                new BPPopulationEvaluator(dataset,1E-5,50_000,0.,1e-3,30,0.9)
+                new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
+//                new PSOPopulationEvaluator(dataset, PSOPopulationSize, PSOMaxIter, desiredError, desiredPrecision, PSOMaxTrys)
+                new BPPopulationEvaluator(dataset,1E-5,3_000,0.,1e-3,30,0.9)
         );
 
 

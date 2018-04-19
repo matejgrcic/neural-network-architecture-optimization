@@ -9,13 +9,15 @@ public class NNUtil {
 
     public static Random random = new Random();
 
-    public static RealMatrix[] createWeightMatrices(int[] architecture, double[] weightsArray) {
+    public static RealMatrix[] createWeightMatrices(int[] architecture) {
         RealMatrix[] weights = new RealMatrix[architecture.length - 1];
         for (int i = 0; i < architecture.length - 1; ++i) {
             weights[i] = new Array2DRowRealMatrix(architecture[i] + 1, architecture[i + 1]);
         }
-        int cnt = 0;
+
         for (RealMatrix matrix : weights) {
+            int cnt = 0;
+            double[] weightsArray = xavierInitialization(matrix.getRowDimension(),matrix.getColumnDimension());
             for (int i = 0; i < matrix.getRowDimension(); ++i) {
                 for (int j = 0; j < matrix.getColumnDimension(); ++j) {
                     matrix.setEntry(i, j, weightsArray[cnt++]);
@@ -53,5 +55,16 @@ public class NNUtil {
         }
 
         return array;
+    }
+
+    public static double[] xavierInitialization(int rows, int cols) {
+        double[] weights = new double[rows*cols];
+        int cnt = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                weights[cnt++] = random.nextGaussian() * (2.0 / (rows + cols - 1));
+            }
+        }
+        return weights;
     }
 }
