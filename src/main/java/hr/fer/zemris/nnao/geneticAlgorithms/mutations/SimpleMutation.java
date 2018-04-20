@@ -25,30 +25,21 @@ public class SimpleMutation implements Mutation {
 
     @Override
     public Solution mutate(Solution solution) {
-        if (rand.nextDouble() > mutationProbability) {
-            return solution;
+        // mutiraj slojeve
+        for(int i = 0; i < solution.getNumberOfLayers()-2; ++i) {
+            if (rand.nextDouble() > mutationProbability) {
+                continue;
+            }
+            solution.getArchitecture()[i+1] = rand.nextInt(maxLayerSize - minLayerSize + 1) + minLayerSize;
+        }
+        //mutiraj arhitekturu
+        for(int i = 0; i < solution.getNumberOfLayers(); ++i) {
+            if (rand.nextDouble() > mutationProbability) {
+                continue;
+            }
+            solution.getActivations()[i] = ActivationFunctions.allActivations[rand.nextInt(ActivationFunctions.allActivations.length)];
         }
 
-//        System.err.println("Mutation happened.");
-
-        Solution mutated = null;
-        int index = rand.nextInt(solution.getNumberOfLayers() * 2);
-        if (index % 2 == 0) {
-            //mutiraj aktivacije
-            index = index % solution.getNumberOfLayers();
-            IActivation[] activations = solution.getActivations();
-            activations[rand.nextInt(activations.length)] =
-                    ActivationFunctions.allActivations[rand.nextInt(ActivationFunctions.allActivations.length)];
-            mutated = new Solution(activations, solution.getNumberOfLayers(), solution.getArchitecture(), solution.getWeights());
-        } else {
-            //mutiraj arhitekt
-            index = index % solution.getNumberOfLayers();
-            int[] architecture = solution.getArchitecture();
-            architecture[rand.nextInt(architecture.length-2)+1] = rand.nextInt(maxLayerSize - minLayerSize + 1) + minLayerSize;
-            double[] weights = createRandomArray(calculateNumberOfWeights(architecture));
-            mutated = new Solution(solution.getActivations(),solution.getNumberOfLayers(),architecture,weights);
-        }
-
-        return mutated;
+        return solution;
     }
 }

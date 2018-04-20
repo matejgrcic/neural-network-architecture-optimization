@@ -27,7 +27,7 @@ public class MainSinXNormalised {
     public static final int inputSize = 1;
     public static final int outputSize = 1;
     public static final int numberOfSelectionCandidates = 4;
-    public static final double mutationProb = 0.2;
+    public static final double mutationProb = 0.05;
     public static final double desiredError = 0.;
     public static final double desiredFitness = 0.;
     public static final double desiredPrecision = 1E-3;
