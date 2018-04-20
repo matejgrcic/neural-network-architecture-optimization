@@ -59,4 +59,24 @@ public class DatasetUtils {
         };
         return createDataset(Paths.get("./linear.csv"), ",", creator);
     }
+
+
+    public static List<DatasetEntry> createIrisDataset() throws IOException {
+        Function<String[], DatasetEntry> creator = u -> {
+            double[] input = new double[]{Double.parseDouble(u[0]),Double.parseDouble(u[1]),Double.parseDouble(u[2]),Double.parseDouble(u[3])};
+            double[] output = null;
+            if(u[4].equals("setosa")) {
+                output = new double[]{0.};
+            }else if(u[4].equals("versicolor")) {
+                output = new double[]{1.};
+            }else if(u[4].equals("virginica")) {
+                output = new double[]{2.};
+            }else {
+                throw new RuntimeException("Invalid dataset value");
+            }
+
+            return new DatasetEntry(input, output);
+        };
+        return createDataset(Paths.get("./iris.csv"), ",", creator);
+    }
 }
