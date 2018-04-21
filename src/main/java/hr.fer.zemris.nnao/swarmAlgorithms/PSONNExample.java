@@ -17,7 +17,7 @@ public class PSONNExample {
     public static void main(String[] args) throws IOException{
         NeuralNetwork nn =
                 new NeuralNetwork(
-                        new int[]{2, 12, 1},
+                        new int[]{2, 120, 1},
                         new IActivation[]{ActivationFunctions.Identity,ActivationFunctions.ReLU , ActivationFunctions.ReLU});
         double[] lowerBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
@@ -49,6 +49,6 @@ public class PSONNExample {
                 sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0],2.);
             }
             return sum/data.size();
-        }, comparator, 0., 1E-3, 100);
+        }, comparator, 0., 1E-3, 500);
     }
 }

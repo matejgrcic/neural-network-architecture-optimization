@@ -19,7 +19,7 @@ import java.util.List;
 public class MainIris {
 
     public static final int populationSize = 12;
-    public static final int maxIter = 100;
+    public static final int maxIter = 50;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
     public static final int maxLayerSize = 110;
@@ -69,8 +69,9 @@ public class MainIris {
         for (DatasetEntry d : dataset) {
             double[] res = nn.forward(d.getInput());
 
-            double x = res[0];
+            double x = Math.round(res[0]);
             double target = d.getOutput()[0];
+            System.out.println("Expected: "+target + " Dobiveno: "+ x);
             if(target != x) {
                 cnt++;
             }

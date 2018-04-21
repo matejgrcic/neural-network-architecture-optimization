@@ -1,0 +1,410 @@
+"C:\Program Files\Java\jdk-9.0.1\bin\java" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.5\lib\idea_rt.jar=49975:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.5\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\ggd\IdeaProjects\neural-network-architecture-optimization\target\classes;C:\Users\ggd\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\ggd\.m2\repository\org\jfree\jfreechart\1.0.19\jfreechart-1.0.19.jar;C:\Users\ggd\.m2\repository\org\jfree\jcommon\1.0.23\jcommon-1.0.23.jar;C:\Users\ggd\.m2\repository\org\apache\commons\commons-lang3\3.6\commons-lang3-3.6.jar hr.fer.zemris.nnao.MainIris
+#Iteration: 0
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 1.7976931348623157E308
+
+#Iteration: 1
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 8122.389879410472
+
+#Iteration: 2
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 258.7424097448979
+
+#Iteration: 3
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 6.689853047813595
+
+#Iteration: 4
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 3.724820294729747
+
+#Iteration: 5
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 2.1495915469547255
+
+#Iteration: 6
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 2.149591546954726
+
+#Iteration: 7
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 2.0913019421713934
+
+#Iteration: 8
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 2.0913019421713934
+
+#Iteration: 9
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 2.0913019421713934
+
+#Iteration: 10
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 1.2071235732774512
+
+#Iteration: 11
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.39451235957569614
+
+#Iteration: 12
+	Best fitness: 0.20243527828095073
+	Best architecture: 5: [4/Identity] / [98/Identity] / [100/Sigmoid] / [84/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.39451235957569614
+
+#Iteration: 13
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.39451235957569614
+
+#Iteration: 14
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 15
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 16
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 17
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 18
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 19
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 20
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 21
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 22
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 23
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 24
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 25
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 26
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 27
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 28
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 29
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 30
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 31
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 32
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 33
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 34
+	Best fitness: 0.07145567526543668
+	Best architecture: 5: [4/Sigmoid] / [102/Identity] / [81/Identity] / [102/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 35
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.371411440522836
+
+#Iteration: 36
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 37
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 38
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 39
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 40
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 41
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 42
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 43
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 44
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 45
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 46
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 47
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 48
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 49
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+#Iteration: 50
+	Best fitness: 0.03899089954960275
+	Best architecture: 5: [4/Sigmoid] / [99/Identity] / [89/ReLU] / [100/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3687060425465165
+
+4Sigmoid 99Identity 89ReLU 100Sigmoid 1Identity Error: 0.03899089954960275
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Falilo: 5
+
+Process finished with exit code 0

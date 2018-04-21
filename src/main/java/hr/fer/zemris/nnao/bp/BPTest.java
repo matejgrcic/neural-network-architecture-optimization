@@ -15,7 +15,7 @@ public class BPTest {
     //OVO DODE DO mse od 98 na training setu
     public static void main(String[] args ) throws IOException{
         NeuralNetwork nn = new NeuralNetwork(
-                new int[] {2, 12,1},
+                new int[] {2, 120,1},
                 new IActivation[] {ActivationFunctions.Identity,ActivationFunctions.ReLU, ActivationFunctions.ReLU}
         );
 
