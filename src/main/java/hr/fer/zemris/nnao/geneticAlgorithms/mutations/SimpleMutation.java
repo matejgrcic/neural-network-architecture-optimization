@@ -6,8 +6,7 @@ import hr.fer.zemris.nnao.neuralNetwork.activations.IActivation;
 
 import java.util.Random;
 
-import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.calculateNumberOfWeights;
-import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.createRandomArray;
+import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.*;
 
 public class SimpleMutation implements Mutation {
 
@@ -39,7 +38,7 @@ public class SimpleMutation implements Mutation {
             }
             solution.getActivations()[i] = ActivationFunctions.allActivations[rand.nextInt(ActivationFunctions.allActivations.length)];
         }
-
-        return solution;
+        double[] weights = getWeights(calculateNumberOfWeights(solution.getArchitecture()),createWeightMatrices(solution.getArchitecture()));
+        return new Solution(solution.getActivations(),solution.getNumberOfLayers(),solution.getArchitecture(), weights);
     }
 }

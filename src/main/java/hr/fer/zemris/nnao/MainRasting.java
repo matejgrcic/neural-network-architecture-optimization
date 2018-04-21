@@ -21,8 +21,8 @@ public class MainRasting {
     public static final int maxIter = 1000;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
-    public static final int maxLayerSize = 15;
-    public static final int minLayerSize = 6;
+    public static final int maxLayerSize = 100;
+    public static final int minLayerSize = 30;
     public static final int inputSize = 2;
     public static final int outputSize = 1;
     public static final int numberOfSelectionCandidates = 4;

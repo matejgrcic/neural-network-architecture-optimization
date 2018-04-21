@@ -16,8 +16,8 @@ public class PSONNExampleIris {
     public static void main(String[] args) throws IOException {
         NeuralNetwork nn =
                 new NeuralNetwork(
-                        new int[]{4, 15, 7, 3},
-                        new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.ReLU, ActivationFunctions.ReLU, ActivationFunctions.ReLU});
+                        new int[]{4, 87, 1},
+                        new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.ReLU, ActivationFunctions.Identity});
         double[] lowerBound = new double[nn.getWeightsNumber()];
         for (int i = 0; i < lowerBound.length; ++i) {
             lowerBound[i] = -5.12;
@@ -45,33 +45,10 @@ public class PSONNExampleIris {
             double sum = 0.;
             for (DatasetEntry d : data) {
                 double[] res = nn.forward(d.getInput());
-                double softmax = 0.;
-                for (int i = 0; i < res.length; ++i) {
-                    softmax += Math.abs(res[i]);
-                }
-
-                double[] vals = new double[res.length];
-                int best = -1;
-                double bestVal = 0.;
-                for (int i = 0; i < res.length; ++i) {
-                    vals[i] = Math.abs(res[i]) / softmax;
-                    if (vals[i] > bestVal) {
-                        best = i;
-                        bestVal = vals[i];
-                    }
-                }
-
-                int target = (int) d.getOutput()[0];
-                if (target == best) {
-                    sum += 1. - bestVal;
-                } else {
-                    sum+= 1. - vals[target];
-                    sum+= bestVal;
-                }
-
+                sum += Math.pow(d.getOutput()[0] - res[0], 2.);
             }
             return sum / data.size();
-        }, comparator, 0., 1E-3, 100);
+        }, comparator, 0., 1E-3, 200);
 
         nn.setWeights(result);
         double sum = 0.;
@@ -79,5 +56,19 @@ public class PSONNExampleIris {
             sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0], 2.);
         }
         System.out.println(sum / data.size());
+
+        int cnt = 0;
+        for (DatasetEntry d : data) {
+            double[] res = nn.forward(d.getInput());
+            double x = Math.round(res[0]);
+
+            double target = d.getOutput()[0];
+            if (target != x) {
+                cnt++;
+            }
+
+
+        }
+        System.out.println("Falilo: " + cnt);
     }
 }

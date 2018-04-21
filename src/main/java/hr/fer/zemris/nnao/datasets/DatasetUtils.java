@@ -66,11 +66,11 @@ public class DatasetUtils {
             double[] input = new double[]{Double.parseDouble(u[0]),Double.parseDouble(u[1]),Double.parseDouble(u[2]),Double.parseDouble(u[3])};
             double[] output = null;
             if(u[4].equals("setosa")) {
-                output = new double[]{0.};
+                output = new double[]{-1.};
             }else if(u[4].equals("versicolor")) {
-                output = new double[]{1.};
+                output = new double[]{0.};
             }else if(u[4].equals("virginica")) {
-                output = new double[]{2.};
+                output = new double[]{1.};
             }else {
                 throw new RuntimeException("Invalid dataset value");
             }

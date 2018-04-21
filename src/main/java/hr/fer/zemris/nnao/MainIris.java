@@ -6,8 +6,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.AbstractGA;
 import hr.fer.zemris.nnao.geneticAlgorithms.EliminationGA;
 import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
-import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.BPPopulationEvaluator;
-import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluatorIris;
+import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
@@ -19,19 +18,19 @@ import java.util.List;
 
 public class MainIris {
 
-    public static final int populationSize = 10;
-    public static final int maxIter = 10;
+    public static final int populationSize = 12;
+    public static final int maxIter = 100;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
-    public static final int maxLayerSize = 19;
-    public static final int minLayerSize = 6;
+    public static final int maxLayerSize = 110;
+    public static final int minLayerSize = 80;
     public static final int inputSize = 4;
-    public static final int outputSize = 3;
+    public static final int outputSize = 1;
     public static final int numberOfSelectionCandidates = 4;
-    public static final double mutationProb = 0.2;
+    public static final double mutationProb = 0.3;
     public static final double desiredError = 0.;
     public static final double desiredFitness = 0.;
-    public static final double desiredPrecision = 1e-3;
+    public static final double desiredPrecision = 1e-5;
     public static final boolean selectDuplicates = false;
 
     public static final double learningRate = 1E-5;
@@ -52,7 +51,7 @@ public class MainIris {
                 new SimpleCrossover(),
                 new SimpleMutation(mutationProb, minLayerSize, maxLayerSize),
                 new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
-                new PSOPopulationEvaluatorIris(dataset, 50, 70, 0., 1E-3, 3)
+                new PSOPopulationEvaluator(dataset, 50, 70, desiredError, desiredPrecision, 1)
         );
 
         StringBuilder sb = new StringBuilder();
@@ -69,24 +68,10 @@ public class MainIris {
         double sum = 0.;
         for (DatasetEntry d : dataset) {
             double[] res = nn.forward(d.getInput());
-            double softmax = 0.;
-            for (int i = 0; i < res.length; ++i) {
-                softmax += Math.abs(res[i]);
-            }
 
-            double[] vals = new double[res.length];
-            int best = -1;
-            double bestVal = 0.;
-            for (int i = 0; i < res.length; ++i) {
-                vals[i] = Math.abs(res[i]) / softmax;
-                if (vals[i] > bestVal) {
-                    best = i;
-                    bestVal = vals[i];
-                }
-            }
-
-            int target = (int) d.getOutput()[0];
-            if(target != best) {
+            double x = res[0];
+            double target = d.getOutput()[0];
+            if(target != x) {
                 cnt++;
             }
 
