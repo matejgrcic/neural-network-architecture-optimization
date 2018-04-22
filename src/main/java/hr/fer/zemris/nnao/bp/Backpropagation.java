@@ -1,9 +1,7 @@
 package hr.fer.zemris.nnao.bp;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
-import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.neuralNetwork.INeuralNetwork;
-import hr.fer.zemris.nnao.neuralNetwork.NNUtil;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.activations.IActivation;
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
@@ -14,7 +12,8 @@ import org.apache.commons.math3.linear.RealVector;
 import java.util.List;
 
 import static hr.fer.zemris.nnao.bp.BPUtil.createBatches;
-import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.*;
+import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.calculateNumberOfWeights;
+import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.getWeights;
 
 public class Backpropagation extends AbstractBackpropagation {
 
@@ -62,7 +61,7 @@ public class Backpropagation extends AbstractBackpropagation {
                 mseSum += totalNeuronError;
             }
             trainingMSE = mseSum / trainingSet.size();
-            System.out.println("Iter : " + currentIteration + " MSError je: " + trainingMSE);
+//            System.out.println("Iter : " + currentIteration + " MSError je: " + trainingMSE);
 
             RealVector validationMse = new ArrayRealVector(nnArchitecture[nnArchitecture.length - 1]);
             for (DatasetEntry entry : validationSet) {
@@ -79,7 +78,7 @@ public class Backpropagation extends AbstractBackpropagation {
             }
             double lastIterValMSE = validationMSE;
             validationMSE = validationMseSum / validationSet.size();
-//            System.out.println("Iter : " + currentIteration + " Validation MSError je: " + validationMSE);
+//            System.out.println("Validation error: "+validationMSE);
             if (lastIterValMSE <= validationMSE && currentIteration > maxIteration / 2) {
                 break;
             }
@@ -94,7 +93,6 @@ public class Backpropagation extends AbstractBackpropagation {
 
             ++currentIteration;
         }
-//        System.out.println("MSError je: " + trainingMSE);
         return trainingMSE;
     }
 

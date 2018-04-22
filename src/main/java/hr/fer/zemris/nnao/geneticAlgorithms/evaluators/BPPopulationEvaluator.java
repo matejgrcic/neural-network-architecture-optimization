@@ -3,12 +3,11 @@ package hr.fer.zemris.nnao.geneticAlgorithms.evaluators;
 import hr.fer.zemris.nnao.bp.Backpropagation;
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
-import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PopulationEvaluator;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 
 import java.util.List;
 
-public class BPPopulationEvaluator implements PopulationEvaluator {
+public class BPPopulationEvaluator extends AbstractPopulationEvaluator {
 
     private List<DatasetEntry> trainingDataset;
     private List<DatasetEntry> validationDataset;
@@ -32,13 +31,16 @@ public class BPPopulationEvaluator implements PopulationEvaluator {
         this.desiredPrecision = desiredPrecision;
     }
 
+    @Override
     public double evaluateSolution(Solution solution) {
         double best = Double.MAX_VALUE;
         NeuralNetwork nn = new NeuralNetwork(solution.getArchitecture(), solution.getActivations());
         nn.setWeights(solution.getWeights());
         Backpropagation bp = new Backpropagation(trainingDataset, validationDataset,
                 learningRate, maxIteration, desiredError, desiredPrecision, nn, batchSize);
-        return bp.run();
+        double fitness =  bp.run();
+        notifyObservers(fitness);
+        return fitness;
     }
 
 }

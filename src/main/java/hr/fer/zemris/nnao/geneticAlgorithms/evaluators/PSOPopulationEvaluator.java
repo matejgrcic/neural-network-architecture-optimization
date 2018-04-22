@@ -2,7 +2,6 @@ package hr.fer.zemris.nnao.geneticAlgorithms.evaluators;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
-import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PopulationEvaluator;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.swarmAlgorithms.AlgorithmPSO;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class PSOPopulationEvaluator implements PopulationEvaluator {
+public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
 
     private List<DatasetEntry> dataset;
     private int populationSize;
@@ -59,24 +58,17 @@ public class PSOPopulationEvaluator implements PopulationEvaluator {
             return sum / dataset.size();
         };
 
-        double best = Double.MAX_VALUE;
+        double bestFitness = Double.MAX_VALUE;
         for(int i = 0; i<maxTrys; ++i) {
             AlgorithmPSO pso = new AlgorithmPSO(populationSize, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
             double[] result = pso.run(particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations);
-
-            nn.setWeights(result);
             solution.setWeights(result);
-            double sum = 0.;
-            for (DatasetEntry d : dataset) {
-                sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0], 2.);
-            }
-            double x = sum / dataset.size();
-            if (Math.abs(x) < best) {
-                best = Math.abs(x);
-
+            double fitness = particleEvaluator.apply(result);
+            if (Math.abs(fitness) < bestFitness) {
+                bestFitness = Math.abs(fitness);
             }
         }
-//        System.err.println("Best mse: " + best);
-        return best;
+        notifyObservers(bestFitness);
+        return bestFitness;
     }
 }

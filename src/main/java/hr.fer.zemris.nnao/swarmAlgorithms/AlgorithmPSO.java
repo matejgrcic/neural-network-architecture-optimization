@@ -61,8 +61,6 @@ public class AlgorithmPSO {
                     globalBestPosition = particlesPositions[i];
                 }
             }
-
-            System.err.println("Iter " + (iter + 1) + " GBV: " + String.format("%.2f", globalBestValue));
             if (Math.abs(globalBestValue - desiredError) < desiredPrecision) {
                 break;
             }

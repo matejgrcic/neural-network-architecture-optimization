@@ -11,7 +11,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
-import hr.fer.zemris.nnao.observers.ConsoleLoggerObserver;
+import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
 
 import java.io.IOException;
 import java.util.List;

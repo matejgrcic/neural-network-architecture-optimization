@@ -2,14 +2,16 @@ package hr.fer.zemris.nnao;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.datasets.DatasetUtils;
-import hr.fer.zemris.nnao.geneticAlgorithms.*;
+import hr.fer.zemris.nnao.geneticAlgorithms.AbstractGA;
+import hr.fer.zemris.nnao.geneticAlgorithms.GenerationGA;
+import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
-import hr.fer.zemris.nnao.observers.ConsoleLoggerObserver;
+import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
 
 import java.io.IOException;
 import java.util.List;

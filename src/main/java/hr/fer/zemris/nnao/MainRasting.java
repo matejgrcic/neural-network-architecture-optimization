@@ -2,15 +2,18 @@ package hr.fer.zemris.nnao;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.datasets.DatasetUtils;
-import hr.fer.zemris.nnao.geneticAlgorithms.*;
+import hr.fer.zemris.nnao.geneticAlgorithms.AbstractGA;
+import hr.fer.zemris.nnao.geneticAlgorithms.EliminationGA;
+import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
-import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.BPPopulationEvaluator;
+import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.AbstractPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
-import hr.fer.zemris.nnao.observers.ConsoleLoggerObserver;
+import hr.fer.zemris.nnao.observers.evaluators.LoggerEvaluationObserver;
+import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,11 +21,11 @@ import java.util.List;
 public class MainRasting {
 
     public static final int populationSize = 10;
-    public static final int maxIter = 1000;
+    public static final int maxIter = 70;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
-    public static final int maxLayerSize = 100;
-    public static final int minLayerSize = 30;
+    public static final int maxLayerSize = 130;
+    public static final int minLayerSize = 50;
     public static final int inputSize = 2;
     public static final int outputSize = 1;
     public static final int numberOfSelectionCandidates = 4;
@@ -35,7 +38,7 @@ public class MainRasting {
     public static final double learningRate = 1E-5;
     public static final double trainPercentage = 0.9;
     public static final int batchSize = 30;
-    public static final int maxIterBP = 10_000;
+    public static final int maxIterBP = 50_000;
 
     public static void main(String[] args) throws IOException {
 
@@ -45,12 +48,16 @@ public class MainRasting {
 
         ga.addObserver(new ConsoleLoggerObserver());
 
+        AbstractPopulationEvaluator evaluator = new PSOPopulationEvaluator(dataset,50,100,desiredError, desiredPrecision, 1);
+        evaluator.addObserver(new LoggerEvaluationObserver());
+
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
                 new SimpleMutation(mutationProb, minLayerSize, maxLayerSize),
                 new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
-                new BPPopulationEvaluator(dataset, learningRate, maxIterBP, desiredError, desiredPrecision, batchSize, trainPercentage)
+//                new BPPopulationEvaluator(dataset, learningRate, maxIterBP, desiredError, desiredPrecision, batchSize, trainPercentage)
+                evaluator
         );
 
         StringBuilder sb = new StringBuilder();

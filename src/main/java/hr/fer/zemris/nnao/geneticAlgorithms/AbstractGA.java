@@ -5,7 +5,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.IPopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.Mutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.Selection;
-import hr.fer.zemris.nnao.observers.GAObserver;
+import hr.fer.zemris.nnao.observers.ga.GAObserver;
 
 import java.util.ArrayList;
 import java.util.Collections;
