@@ -3,7 +3,7 @@ package hr.fer.zemris.nnao;
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.datasets.DatasetUtils;
 import hr.fer.zemris.nnao.geneticAlgorithms.AbstractGA;
-import hr.fer.zemris.nnao.geneticAlgorithms.EliminationGA;
+import hr.fer.zemris.nnao.geneticAlgorithms.GenerationGA;
 import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.AbstractPopulationEvaluator;
@@ -24,10 +24,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-public class MainIris {
+public class MainIrisGeneration {
 
-    public static final int populationSize = 12;
-    public static final int maxIter = 100;
+    public static final int populationSize = 10;
+    public static final int maxIter = 5;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
     public static final int maxLayerSize = 110;
@@ -50,7 +50,7 @@ public class MainIris {
 
         List<DatasetEntry> dataset = DatasetUtils.createIrisDataset();
 
-        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
+        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
 
         OutputStream os = Files.newOutputStream(Paths.get("./iris_result.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 

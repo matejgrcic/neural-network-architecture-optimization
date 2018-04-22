@@ -37,18 +37,15 @@ public abstract class AbstractGA {
     public Solution run(IPopulationGenerator populationGenerator, Crossover crossover, Mutation mutation, Selection selection, PopulationEvaluator populationEvaluator) {
 
         fillInitialPopulation(populationGenerator, populationEvaluator);
+        calculateAverageFitness();
         notifyObservers();
 
         while (Math.abs(bestFitness - desiredFitness) > desiredPrecision && currentIteration < maxIterations) {
 
             currentIteration++;
-
             calculateAverageFitness();
-
             Collections.sort(population, (s1, s2) -> (int) (s1.getFitness() - s2.getFitness()));
-
             createNextPopulation(selection, crossover, mutation, populationEvaluator);
-
             notifyObservers();
         }
 

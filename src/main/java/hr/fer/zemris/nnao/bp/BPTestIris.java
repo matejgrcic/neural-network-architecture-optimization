@@ -15,7 +15,7 @@ public class BPTestIris {
     public static void main(String[] args) throws IOException {
         NeuralNetwork nn = new NeuralNetwork(
                 new int[]{4, 100, 1},
-                new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.ReLU, ActivationFunctions.Identity}
+                new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.Sigmoid, ActivationFunctions.Identity}
         );
 
         List<DatasetEntry> dataset = DatasetUtils.createIrisDataset();
