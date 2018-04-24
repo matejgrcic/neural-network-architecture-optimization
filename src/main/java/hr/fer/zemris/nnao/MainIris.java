@@ -27,11 +27,11 @@ import java.util.List;
 public class MainIris {
 
     public static final int populationSize = 12;
-    public static final int maxIter = 100;
+    public static final int maxIter = 70;
     public static final int minLayersNum = 3;
-    public static final int maxLayersNum = 5;
-    public static final int maxLayerSize = 110;
-    public static final int minLayerSize = 80;
+    public static final int maxLayersNum = 3;
+    public static final int maxLayerSize = 100;
+    public static final int minLayerSize = 70;
     public static final int inputSize = 4;
     public static final int outputSize = 1;
     public static final int numberOfSelectionCandidates = 4;
@@ -41,10 +41,10 @@ public class MainIris {
     public static final double desiredPrecision = 1e-5;
     public static final boolean selectDuplicates = false;
 
-    public static final double learningRate = 1E-4;
+    public static final double learningRate = 1E-3;
     public static final double trainPercentage = 0.7;
     public static final int batchSize = 30;
-    public static final int maxIterBP = 50_000;
+    public static final int maxIterBP = 20_000;
 
     public static void main(String[] args) throws IOException {
 
@@ -58,8 +58,8 @@ public class MainIris {
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
 
-        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset,50,100,desiredError,desiredPrecision,1);
-        //        AbstractPopulationEvaluator evaluation = new BPPopulationEvaluator(dataset,learningRate,maxIterBP,desiredError,desiredPrecision,batchSize,trainPercentage);
+        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset,50,70,desiredError,desiredPrecision,2);
+//                AbstractPopulationEvaluator evaluation = new BPPopulationEvaluator(dataset,learningRate,maxIterBP,desiredError,desiredPrecision,batchSize,trainPercentage);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),

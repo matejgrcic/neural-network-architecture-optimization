@@ -14,20 +14,20 @@ public class BPTestIris {
     //OVO DODE DO 5 pogresaka!!!!!
     public static void main(String[] args) throws IOException {
         NeuralNetwork nn = new NeuralNetwork(
-                new int[]{4, 100, 1},
+                new int[]{4, 70, 1},
                 new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.Sigmoid, ActivationFunctions.Identity}
         );
 
         List<DatasetEntry> dataset = DatasetUtils.createIrisDataset();
 
 
-        Backpropagation bp = new Backpropagation(dataset.subList(0, 105), dataset.subList(105, dataset.size()), 1E-4,
-                50_000, 0., 1E-4, nn, 30);
+        Backpropagation bp = new Backpropagation(dataset.subList(0, 105), dataset.subList(105, 128), 1E-4,
+                100_000, 0., 1E-3, nn, 30);
         bp.run();
 
+        List<DatasetEntry> test = dataset.subList(128,dataset.size());
 
         int cnt = 0;
-        double sum = 0.;
         for (DatasetEntry d : dataset) {
             double[] res = nn.forward(d.getInput());
 
@@ -40,7 +40,22 @@ public class BPTestIris {
 
 
         }
-        System.out.println("Falilo: "+cnt);
+        System.out.println("Falilo na ukupno: "+cnt);
+
+        cnt = 0;
+        for (DatasetEntry d : test) {
+            double[] res = nn.forward(d.getInput());
+
+            double x = Math.round(res[0]);
+            double target = d.getOutput()[0];
+            System.out.println("Expected: "+target + " Dobiveno: "+ x);
+            if(target != x) {
+                cnt++;
+            }
+
+
+        }
+        System.out.println("Falilo na test: "+cnt);
 
     }
 }

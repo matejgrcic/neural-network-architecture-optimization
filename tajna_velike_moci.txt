@@ -1,0 +1,1034 @@
+"C:\Program Files\Java\jdk-9.0.1\bin\java" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.5\lib\idea_rt.jar=62640:C:\Program Files\JetBrains\IntelliJ IDEA 2017.2.5\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\ggd\IdeaProjects\neural-network-architecture-optimization\target\classes;C:\Users\ggd\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\ggd\.m2\repository\org\jfree\jfreechart\1.0.19\jfreechart-1.0.19.jar;C:\Users\ggd\.m2\repository\org\jfree\jcommon\1.0.23\jcommon-1.0.23.jar;C:\Users\ggd\.m2\repository\org\apache\commons\commons-lang3\3.6\commons-lang3-3.6.jar hr.fer.zemris.nnao.MainIris
+	error: 0.6109736936680186
+	error: 0.6280794753062164
+	error: 3.6111991043919187
+	error: 0.60947963537266
+	error: 1.3972035737209174
+	error: 2.3953473033770325
+	error: 4.764527781310601
+	error: 1.141583495649835
+	error: 3.0031617606179086
+	error: 3.9649961150226107
+	error: 1.8189638951476927
+	error: 0.341693133834899
+#Iteration: 0
+	Best fitness: 0.341693133834899
+	Best architecture: 3: [4/Identity] / [88/ReLU] / [1/Sigmoid] /
+	Average population fitness: 2.023934080618359
+
+	error: 0.66
+#Iteration: 1
+	Best fitness: 0.341693133834899
+	Best architecture: 3: [4/Identity] / [88/ReLU] / [1/Sigmoid] /
+	Average population fitness: 2.023934080618359
+
+	error: 0.6467512793357493
+#Iteration: 2
+	Best fitness: 0.341693133834899
+	Best architecture: 3: [4/Identity] / [88/ReLU] / [1/Sigmoid] /
+	Average population fitness: 1.7485177376998082
+
+	error: 0.09363713423751606
+#Iteration: 3
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 1.4053696958685704
+
+	error: 3.495162217955584
+#Iteration: 4
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 1.1629093103368713
+
+	error: 0.3431706183560213
+#Iteration: 5
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 1.15323956980051
+
+	error: 0.3584361573637265
+#Iteration: 6
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.8905736031672132
+
+	error: 0.35013844332051164
+#Iteration: 7
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.7688629583518827
+
+	error: 2.7799409498949923
+#Iteration: 8
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.6666666666666666
+#Iteration: 9
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.47741094522697913
+#Iteration: 10
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 3.387700127804329
+#Iteration: 11
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.6666666666666666
+#Iteration: 12
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.36274264140833173
+#Iteration: 13
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.5900975907926457
+#Iteration: 14
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 1.7621444415779624
+#Iteration: 15
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 1.6666666666666667
+#Iteration: 16
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.6402178910190476
+#Iteration: 17
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.34673154300058084
+#Iteration: 18
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.598428886680506
+
+	error: 0.3434654882029565
+#Iteration: 19
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5981449783205117
+
+	error: 9.318312463491644
+#Iteration: 20
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5978728070873763
+
+	error: 0.6666666666666666
+#Iteration: 21
+	Best fitness: 0.09363713423751606
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5978728070873763
+
+	error: 0.07156962891702143
+#Iteration: 22
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5978728070873763
+
+	error: 0.48757170280029544
+#Iteration: 23
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 0.34421414828854624
+#Iteration: 24
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 0.3572679087147189
+#Iteration: 25
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 0.6187546203747009
+#Iteration: 26
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 1.1783381752177238
+#Iteration: 27
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 0.66
+#Iteration: 28
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 0.6666666666666666
+#Iteration: 29
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 3.9562360301872475
+#Iteration: 30
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 434.1431934071139
+#Iteration: 31
+	Best fitness: 0.07156962891702143
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 0.06886055599880413
+#Iteration: 32
+	Best fitness: 0.06886055599880413
+	Best architecture: 3: [4/Identity] / [88/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5752148188135485
+
+	error: 0.6410219220428769
+#Iteration: 33
+	Best fitness: 0.06886055599880413
+	Best architecture: 3: [4/Identity] / [88/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5749890627370303
+
+	error: 8169.271749989564
+#Iteration: 34
+	Best fitness: 0.06886055599880413
+	Best architecture: 3: [4/Identity] / [88/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5749890627370303
+
+	error: 0.34273933429586423
+#Iteration: 35
+	Best fitness: 0.06886055599880413
+	Best architecture: 3: [4/Identity] / [88/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5749890627370303
+
+	error: 0.05982509060507174
+#Iteration: 36
+	Best fitness: 0.05982509060507174
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5749890627370303
+
+	error: 0.4948733891912073
+#Iteration: 37
+	Best fitness: 0.05982509060507174
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5742361072875527
+
+	error: 0.05225695064963592
+#Iteration: 38
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5742361072875527
+
+	error: 0.6109610693619076
+#Iteration: 39
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.3540264174420295
+#Iteration: 40
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 7.8559243299277615
+#Iteration: 41
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.3463636585954224
+#Iteration: 42
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.6467170935200847
+#Iteration: 43
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.3466494677992117
+#Iteration: 44
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.35270383978667663
+#Iteration: 45
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.6466674088710233
+#Iteration: 46
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.6533333333333335
+#Iteration: 47
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.052897741176340864
+#Iteration: 48
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.66
+#Iteration: 49
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 1.6467567998716621
+#Iteration: 50
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.35358533427347094
+#Iteration: 51
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.3817406884084745
+#Iteration: 52
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 876.9992045470253
+#Iteration: 53
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.6666666666666666
+#Iteration: 54
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.66
+#Iteration: 55
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.34424139755015853
+#Iteration: 56
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.6666666666666666
+#Iteration: 57
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.6467028139901091
+#Iteration: 58
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.342692650433659
+#Iteration: 59
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.089131031785058
+#Iteration: 60
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 3.058168309882047
+#Iteration: 61
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.06389416643504085
+#Iteration: 62
+	Best fitness: 0.05225695064963592
+	Best architecture: 3: [4/Identity] / [87/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.045203815308082915
+#Iteration: 63
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.573605428957933
+
+	error: 0.07121257252801619
+#Iteration: 64
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5730176676794703
+
+	error: 0.6466963812596773
+#Iteration: 65
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5730176676794703
+
+	error: 0.560046786830476
+#Iteration: 66
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5730176676794703
+
+	error: 0.3437152472945698
+#Iteration: 67
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5730176676794703
+
+	error: 0.35113821197828293
+#Iteration: 68
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5730176676794703
+
+	error: 0.11631212212248959
+#Iteration: 69
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5730176676794703
+
+	error: 0.653339124512469
+#Iteration: 70
+	Best fitness: 0.045203815308082915
+	Best architecture: 3: [4/Identity] / [70/Sigmoid] / [1/Identity] /
+	Average population fitness: 0.5730176676794703
+
+4Identity 70Sigmoid 1Identity Error: 0.045203815308082915
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: 0.0 Dobiveno: 0.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: -1.0 Dobiveno: -1.0
+Expected: 1.0 Dobiveno: 1.0
+Falilo: 2
+-2.0
+2.0
+1.5557554335326054
+0.0800453261102698
+0.05667682391314511
+2.0
+-2.0
+-2.0
+-2.0
+1.326494811462656
+-0.6327832448645019
+-0.9877624776340165
+-1.9319515499570077
+0.16811803387696875
+-2.0
+1.987440892845464
+-2.0
+0.5851209481737649
+-0.7178566510110603
+-2.0
+-1.9974659433259867
+2.0
+1.350872036216467
+0.5683524574677199
+1.5229763465171573
+-1.4296933917599215
+1.9999179443343145
+2.0
+-0.8872645244721135
+1.0669563020096406
+-2.0
+0.6025429729103112
+-2.0
+-1.4201474221939283
+1.8139589307799506
+-0.8205625696582136
+-2.0
+1.9988584807856498
+0.5121086963120748
+0.1320936021886652
+-2.0
+-2.0
+-1.924835341952424
+2.0
+-2.0
+0.2559825872136138
+0.8659482325703539
+0.4135747080536549
+-0.48039829677108975
+2.0
+2.0
+-2.0
+-1.9707027149243497
+-1.2359343326346501
+1.048744264589405
+-2.0
+-2.0
+1.3377596014510649
+1.4569984144524826
+1.1063178886429412
+1.7667156954360785
+0.11365514198983437
+1.5363134700929626
+0.8649133768993865
+-1.0606829880834086
+-0.5396870624442051
+2.0
+1.7728275104629767
+0.7216091789543096
+-1.0282838595461379
+0.6926002884205286
+-2.0
+-1.81885463213556
+1.343040263738914
+1.9454184454953327
+-1.7628657264983825
+2.0
+0.4234131872262086
+-0.3336513697460594
+0.7829057510975156
+2.0
+1.3256030414229174
+2.0
+-1.9623562999903916
+0.6576260691162972
+1.8471647962234712
+-2.0
+1.8316761425550205
+0.07490921036398876
+-2.0
+0.41617665452957897
+2.0
+2.0
+-2.0
+0.45204926401301876
+-2.0
+1.4936583093129907
+-1.9026992743046989
+-1.2245113813069575
+0.742239364312405
+-1.6048006586303791
+-0.9878893622234791
+1.3123045101219852
+2.0
+-1.9687732451343347
+-1.9878542856206722
+2.0
+-2.0
+0.00927008761358089
+-1.9999954014168468
+0.23296594518908628
+-1.9030360247241846
+-0.6508372333860616
+1.3259869040905357
+2.0
+0.3364967373463086
+0.38747500681534264
+2.0
+0.4054903335191763
+2.0
+0.39660305427526055
+-1.3657440008381698
+-1.727394844011894
+2.0
+0.37473065541688183
+-1.2070744132521367
+-2.0
+-0.9777806635536366
+2.0
+0.7594343827285341
+-1.6891647329534123
+-1.5650900834368813
+2.0
+1.2300414940512732
+-2.0
+0.5119290963054189
+-0.18926002071827078
+-0.5349303513787782
+1.4643473527457416
+2.0
+2.0
+1.8687803623946044
+-1.8679165930151422
+-1.5962895045004335
+0.21316794502578407
+2.0
+-1.9734552495323539
+0.43679623164498627
+1.5229449871840877
+2.0
+-1.8729761587417377
+-1.5999645050368676
+1.5545995849730267
+2.0
+-1.000566186354008
+1.5676412434907927
+-0.21717701749957413
+0.7814868200434879
+1.7045890908208867
+-2.0
+1.3451297733257475
+1.9592970522345932
+0.5624715402661463
+-2.0
+2.0
+-2.0
+-2.0
+1.0736371047248128
+-2.0
+2.0
+-2.0
+-2.0
+0.8929032571522156
+-2.0
+-2.0
+-0.8171840825953766
+0.053639320408450375
+1.7228799376423134
+-1.3569620018267368
+-2.0
+-2.0
+1.9016835317775567
+1.4801554036403566
+-0.7780610526421541
+-1.9848047387626253
+-0.9619453552224126
+-0.49153483329309433
+2.0
+-1.7176693896087922
+-2.0
+2.0
+-1.7552118589368246
+0.5053719113587037
+-1.4443790800645893
+1.977574816926694
+0.12580090941855437
+1.5964995609164838
+-0.11370717852337875
+0.07263404606570509
+-0.47723762966085026
+1.8673660890470607
+-0.49322089824386334
+-1.4871977855412026
+2.0
+-1.3835628611478243
+-2.0
+-0.6061277085953541
+0.16621838496673744
+2.0
+0.37881241230523566
+-2.0
+2.0
+-1.9585297054208795
+-1.5441586918304155
+2.0
+-0.722821975086445
+0.5889150231661765
+-0.08201886875834108
+2.0
+0.6530837520609084
+-2.0
+-1.171970452648913
+-1.7441814313444466
+-2.0
+-2.0
+0.9312374793580722
+0.8307694454044129
+-1.2439621415824178
+1.969159422408547
+0.9224225643387672
+-2.0
+-2.0
+-1.2964627534380628
+-1.7918399518194972
+1.1319138531496278
+2.0
+-1.4983001173163704
+-1.4196355458168728
+1.6970200359424785
+-2.0
+1.8924307214754066
+0.6948677809530349
+-0.6630600909633815
+2.0
+2.0
+-2.0
+2.0
+-2.0
+2.0
+2.0
+-0.49448951286945203
+2.0
+0.602452539802099
+-2.0
+-1.992840149351274
+-0.3804904324249347
+-2.0
+-1.6629703982919
+-2.0
+2.0
+2.0
+-2.0
+-2.0
+-2.0
+1.2717208248479148
+1.6403707496153555
+1.9379889682867015
+-0.5331345421482725
+-2.0
+1.3128276488699706
+1.3558412625145568
+-2.0
+-0.7634447623623164
+-0.5001371841374407
+1.5951264800882645
+2.0
+0.06521758688291093
+0.06477496210446798
+2.0
+-1.8072668095965938
+2.0
+-1.3521882033131192
+-0.4946775962503768
+-2.0
+-1.184230538689024
+-2.0
+2.0
+0.37585071166596196
+0.48367070963917697
+-0.9123051816911487
+0.16464676389294436
+-0.9972810195537264
+-2.0
+-2.0
+-0.8270279862295178
+0.2141277155408889
+-2.0
+2.0
+2.0
+2.0
+-0.876442687288293
+1.8844784541445725
+-2.0
+1.9943238658452938
+-0.8998949372237885
+2.0
+2.0
+0.5529866211166071
+-1.6725135594977194
+-0.8263408462273575
+0.9073849882538233
+-0.7598612432597092
+1.746422444323921
+1.2564508424030982
+-0.9356323684407882
+1.6157446730566833
+-0.8813217919183429
+2.0
+2.0
+-2.0
+0.5837785589091584
+-0.9909642922363996
+0.25154692962142655
+-1.7770750213169864
+2.0
+1.9405227323372658
+2.0
+-1.5864337276903575
+-0.9366256013672668
+-0.9795169609898428
+-0.2901050119760155
+-2.0
+-0.3603485903035348
+1.5882726845833266
+0.9946956827499975
+0.11460686487342842
+1.417496921591357
+1.5831579517836223
+-0.3822884762864189
+2.0
+0.5739745724476174
+-1.7200899317341363
+-0.7035361517505399
+2.0
+-0.3125799135538127
+1.787505270357578
+2.0
+-2.0
+0.7405561374665278
+-2.0
+-2.0
+2.0
+1.8666008400673584
+1.9995411685123667
+0.2296895390763164
+0.3587478117139468
+-0.535038040484549
+-2.0
+0.3623511367083193
+1.9278170726385293
+-2.0
+-2.0
+1.6179269092695077
+-0.25205612916981457
+2.0
+-2.0
+-0.6848531774698737
+0.38600712384905805
+1.2998040394142933
+-2.0
+-1.3678534456234728
+-0.5223510803808824
+1.6374283174040172
+2.0
+2.0
+-0.12447927434726995
+-1.8680399791960676
+-2.0
+-1.9999080082080671
+2.0
+-2.0
+-0.05166843474398083
+2.0
+1.0422132021190669
+-0.04022679941997186
+-0.25754398079018354
+-0.6005514694084936
+-0.46346832916444775
+-2.0
+-0.9471670906790951
+1.5600884614423745
+-2.0
+1.0513520556585878
+0.9981212392881362
+1.0925497929834769
+-2.0
+-2.0
+2.0
+-0.5379996136021172
+-0.848193822942481
+0.171419163526324
+0.655823255103501
+-1.0546460359259924
+2.0
+-2.0
+-1.2645761716730148
+-0.24709315264698511
+1.162597163292865
+-0.35440208290037045
+-2.0
+-1.9672123766240648
+-0.061194803210381336
+-2.0
+2.0
+-0.35137027120173364
+-1.504424525904064
+-0.7696401085304447
+2.0
+0.03266020842628056
+-1.9793022558598272
+1.5862877111309208
+
+Process finished with exit code 0
+
+
+public static final int populationSize = 12;
+    public static final int maxIter = 70;
+    public static final int minLayersNum = 3;
+    public static final int maxLayersNum = 3;
+    public static final int maxLayerSize = 100;
+    public static final int minLayerSize = 70;
+    public static final int inputSize = 4;
+    public static final int outputSize = 1;
+    public static final int numberOfSelectionCandidates = 4;
+    public static final double mutationProb = 0.05;
+    public static final double desiredError = 0.;
+    public static final double desiredFitness = 0.;
+    public static final double desiredPrecision = 1e-5;
+    public static final boolean selectDuplicates = false;
+
+    public static final double learningRate = 1E-3;
+    public static final double trainPercentage = 0.7;
+    public static final int batchSize = 30;
+    public static final int maxIterBP = 20_000;
