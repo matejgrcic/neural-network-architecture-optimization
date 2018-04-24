@@ -20,6 +20,7 @@ import java.util.List;
 
 public class MainRasting {
 
+    public static final double  solutionDelta = 0.01;
     public static final int populationSize = 10;
     public static final int maxIter = 70;
     public static final int minLayersNum = 3;
@@ -44,7 +45,7 @@ public class MainRasting {
 
         List<DatasetEntry> dataset = DatasetUtils.createRastring2DDataset();
 
-        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
+        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
 
         ga.addObserver(new ConsoleLoggerObserver());
 

@@ -8,8 +8,8 @@ import hr.fer.zemris.nnao.geneticAlgorithms.selections.Selection;
 public class EliminationGA extends AbstractGA {
 
 
-    public EliminationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision) {
-        super(populationSize, maxIterations, desiredFitness, desiredPrecision);
+    public EliminationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision, double solutionDelta) {
+        super(populationSize, maxIterations, desiredFitness, desiredPrecision, solutionDelta);
     }
 
 
@@ -20,7 +20,6 @@ public class EliminationGA extends AbstractGA {
         Solution child = crossover.doCrossover(parents[0], parents[1]);
         child = mutation.mutate(child);
         double childFitness = Math.abs(populationEvaluator.evaluateSolution(child));
-//        System.err.println("Child fitness: " + childFitness + " Architecture: " + child.toString());
         child.setFitness(childFitness);
 
         if (child.getFitness() < population.get(populationSize - 1).getFitness()) {

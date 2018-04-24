@@ -18,6 +18,7 @@ import java.util.List;
 
 public class MainSinXNormalised {
 
+    public static final double  solutionDelta = 0.001;
     public static final int populationSize = 5;
     public static final int maxIter = 1000;
     public static final int minLayersNum = 3;
@@ -42,7 +43,7 @@ public class MainSinXNormalised {
 
         List<DatasetEntry> dataset = DatasetUtils.createSinXDatasetNormalized();
 
-        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
+        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
 
         ga.addObserver(new ConsoleLoggerObserver());
 

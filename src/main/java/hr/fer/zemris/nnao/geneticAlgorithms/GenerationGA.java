@@ -10,8 +10,8 @@ import java.util.List;
 
 public class GenerationGA extends AbstractGA {
 
-    public GenerationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision) {
-        super(populationSize, maxIterations, desiredFitness, desiredPrecision);
+    public GenerationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision, double solutionDelta) {
+        super(populationSize, maxIterations, desiredFitness, desiredPrecision, solutionDelta);
     }
 
 

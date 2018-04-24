@@ -9,29 +9,36 @@ import hr.fer.zemris.nnao.observers.ga.GAObserver;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import static hr.fer.zemris.nnao.geneticAlgorithms.GAUtil.createSolutionComparator;
+
 public abstract class AbstractGA {
+
+
 
     protected List<Solution> population;
     protected int populationSize;
     protected Solution bestSolution;
+    private Comparator<Solution> solutionComparator;
 
-    protected int currentIteration = 0;
+    protected int currentIteration;
     protected int maxIterations;
 
     protected double bestFitness = Double.MAX_VALUE;
     protected double averageFitness = Double.MAX_VALUE;
-
     private double desiredFitness;
     private double desiredPrecision;
+
     private List<GAObserver> observers = new ArrayList<>();
 
-    public AbstractGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision) {
+    public AbstractGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision,double solutionDelta) {
         this.populationSize = populationSize;
         this.maxIterations = maxIterations;
         this.desiredFitness = desiredFitness;
         this.desiredPrecision = desiredPrecision;
+        this.solutionComparator = createSolutionComparator(solutionDelta);
     }
 
     public Solution run(IPopulationGenerator populationGenerator, Crossover crossover, Mutation mutation, Selection selection, PopulationEvaluator populationEvaluator) {
@@ -44,7 +51,7 @@ public abstract class AbstractGA {
 
             currentIteration++;
             calculateAverageFitness();
-            Collections.sort(population, (s1, s2) -> (int) (s1.getFitness() - s2.getFitness()));
+            Collections.sort(population, solutionComparator);
             createNextPopulation(selection, crossover, mutation, populationEvaluator);
             notifyObservers();
         }

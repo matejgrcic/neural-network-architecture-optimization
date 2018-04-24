@@ -18,6 +18,7 @@ import java.util.List;
 
 public class MainSinXNormalisedGenerationGA {
 
+    public static final double  solutionDelta = 0.001;
     public static final int populationSize = 5;
     public static final int maxIter = 100;
     public static final int minLayersNum = 3;
@@ -40,7 +41,7 @@ public class MainSinXNormalisedGenerationGA {
     public static void main(String[] args) throws IOException {
         List<DatasetEntry> dataset = DatasetUtils.createSinXDatasetNormalized();
 
-        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
+        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
         ga.addObserver(new ConsoleLoggerObserver());
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
