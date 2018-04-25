@@ -56,6 +56,7 @@ public abstract class AbstractGA {
             notifyObservers();
         }
 
+        Collections.sort(population, solutionComparator);
         return bestSolution;
     }
 
@@ -125,5 +126,9 @@ public abstract class AbstractGA {
 
     public double getAverageFitness() {
         return averageFitness;
+    }
+
+    public List<Solution> getPopulation() {
+        return new ArrayList<>(population);
     }
 }

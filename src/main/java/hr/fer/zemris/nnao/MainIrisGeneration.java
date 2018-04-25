@@ -25,8 +25,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class MainIrisGeneration {
-
-    public static final int populationSize = 10;
+    public static final double  solutionDelta = 0.01;
+    public static final int populationSize = 20;
     public static final int maxIter = 5;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
@@ -50,7 +50,7 @@ public class MainIrisGeneration {
 
         List<DatasetEntry> dataset = DatasetUtils.createIrisDataset();
 
-        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
+        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
 
         OutputStream os = Files.newOutputStream(Paths.get("./iris_result.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 

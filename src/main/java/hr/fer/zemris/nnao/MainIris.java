@@ -26,12 +26,12 @@ import java.util.List;
 
 public class MainIris {
 
-    public static final double  solutionDelta = 0.01;
+    public static final double solutionDelta = 0.01;
     public static final int populationSize = 12;
-    public static final int maxIter = 70;
+    public static final int maxIter = 1;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
-    public static final int maxLayerSize = 100;
+    public static final int maxLayerSize = 80;
     public static final int minLayerSize = 40;
     public static final int inputSize = 4;
     public static final int outputSize = 1;
@@ -59,7 +59,7 @@ public class MainIris {
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
 
-        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset,50,100,desiredError,desiredPrecision,2);
+        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset, 50, 100, desiredError, desiredPrecision, 2);
 //                AbstractPopulationEvaluator evaluation = new BPPopulationEvaluator(dataset,learningRate,maxIterBP,desiredError,desiredPrecision,batchSize,trainPercentage);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution s = ga.run(
@@ -79,27 +79,28 @@ public class MainIris {
         }
         System.out.println(sb.toString() + "Error: " + s.getFitness());
 
+
         NeuralNetwork nn = new NeuralNetwork(s.getArchitecture(), s.getActivations());
         nn.setWeights(s.getWeights());
+        System.out.println("Broj pogresaka najbolje: " + calculateMisses(dataset, nn));
 
+        List<Solution> population = ga.getPopulation();
+        for(int i=0; i<population.size();++i) {
+            System.out.println((i+1)+". "+population.get(i).toString()+ " err: "+population.get(i).getFitness());
+        }
+    }
+
+    private static int calculateMisses(List<DatasetEntry> dataset, NeuralNetwork nn) {
         int cnt = 0;
-        double sum = 0.;
         for (DatasetEntry d : dataset) {
             double[] res = nn.forward(d.getInput());
 
             double x = Math.round(res[0]);
             double target = d.getOutput()[0];
-            System.out.println("Expected: "+target + " Dobiveno: "+ x);
-            if(target != x) {
+            if (target != x) {
                 cnt++;
             }
-
-
         }
-        System.out.println("Falilo: "+cnt);
-
-        for(double x : s.getWeights()){
-            System.out.println(x);
-        }
+        return cnt;
     }
 }

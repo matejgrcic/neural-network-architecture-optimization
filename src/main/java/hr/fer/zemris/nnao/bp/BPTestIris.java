@@ -14,7 +14,7 @@ public class BPTestIris {
     //OVO DODE DO 5 pogresaka!!!!!
     public static void main(String[] args) throws IOException {
         NeuralNetwork nn = new NeuralNetwork(
-                new int[]{4, 70, 1},
+                new int[]{4, 43, 1},
                 new IActivation[]{ActivationFunctions.Identity, ActivationFunctions.Sigmoid, ActivationFunctions.Identity}
         );
 
@@ -22,7 +22,7 @@ public class BPTestIris {
 
 
         Backpropagation bp = new Backpropagation(dataset.subList(0, 105), dataset.subList(105, 128), 1E-4,
-                100_000, 0., 1E-3, nn, 30);
+                50_000, 0., 1E-3, nn, 30);
         bp.run();
 
         List<DatasetEntry> test = dataset.subList(128,dataset.size());
