@@ -31,63 +31,28 @@ public class Backpropagation extends AbstractBackpropagation {
         int[] nnArchitecture = neuralNetwork.getNeuralNetworkArchitecture();
 
         while (currentIteration <= maxIteration) {
-            RealVector totalErrorByNeuron = new ArrayRealVector(nnArchitecture[nnArchitecture.length - 1]);
+            RealVector totalErrorByNeuron = null;
             for (List<DatasetEntry> batch : batches) {
                 RealMatrix outputDeltaMatrix = new Array2DRowRealMatrix(batch.size(), nnArchitecture[nnArchitecture.length - 1]);
-                RealMatrix[] layerOutputsByBatch = new RealMatrix[nnArchitecture.length];
-                for (int i = 0; i < nnArchitecture.length - 1; ++i) {
-                    layerOutputsByBatch[i] = new Array2DRowRealMatrix(batch.size(), nnArchitecture[i] + 1);
-                }
-                layerOutputsByBatch[layerOutputsByBatch.length - 1] = new Array2DRowRealMatrix(batch.size(), nnArchitecture[nnArchitecture.length - 1]);
-                for (int i = 0; i < batch.size(); ++i) {
-                    DatasetEntry entry = batch.get(i);
-                    double[] output = neuralNetwork.forward(entry.getInput());
-                    RealVector calculatedOutput = new ArrayRealVector(output);
-                    RealVector expectedOutput = new ArrayRealVector(entry.getOutput());
-                    RealVector error = expectedOutput.subtract(calculatedOutput);
-                    outputDeltaMatrix.setRowVector(i, error);
-                    totalErrorByNeuron = totalErrorByNeuron.add(error.ebeMultiply(error));
+                RealMatrix[] layerOutputsByBatch = createOutputMatrices(nnArchitecture, batch);
+                totalErrorByNeuron = fillOutputMatrices(outputDeltaMatrix, layerOutputsByBatch, nnArchitecture[nnArchitecture.length - 1], batch);
 
-                    double[][] outputOfLayers = neuralNetwork.getOutputOfLayers();
-                    for (int j = 0; j < outputOfLayers.length; ++j) {
-                        layerOutputsByBatch[j].setRow(i, outputOfLayers[j]);
-                    }
-                }
                 doBackpropagation(neuralNetwork, outputDeltaMatrix, layerOutputsByBatch);
             }
-            //u metodu
-            double mseSum = 0;
-            for (double totalNeuronError : totalErrorByNeuron.toArray()) {
-                mseSum += totalNeuronError;
-            }
-            trainingMSE = mseSum / trainingSet.size();
+            trainingMSE = calculateMse(totalErrorByNeuron,trainingSet.size());
             System.out.println("Iter : " + currentIteration + " MSError je: " + trainingMSE);
 
-            RealVector validationMse = new ArrayRealVector(nnArchitecture[nnArchitecture.length - 1]);
-            for (DatasetEntry entry : validationSet) {
-                RealVector output = new ArrayRealVector(neuralNetwork.forward(entry.getInput()));
-                RealVector expectedOutput = new ArrayRealVector(entry.getOutput());
-                RealVector error = output.subtract(expectedOutput);
-                validationMse = validationMse.add(error.ebeMultiply(error));
-            }
+            RealVector validationMse = fillErrorVector(nnArchitecture[nnArchitecture.length-1],validationSet, neuralNetwork);
 
-            //u metodu
-            double validationMseSum = 0;
-            for (double totalNeuronError : totalErrorByNeuron.toArray()) {
-                validationMseSum += totalNeuronError;
-            }
             double lastIterValMSE = validationMSE;
-            validationMSE = validationMseSum / validationSet.size();
-            System.out.println("Validation error: "+validationMSE);
+            validationMSE = calculateMse(validationMse,validationSet.size());
+            System.out.println("Validation error: " + validationMSE);
+
             if (lastIterValMSE <= validationMSE && currentIteration > maxIteration / 2) {
                 break;
             }
 
-            if(Double.isNaN(trainingMSE)){
-                break;
-            }
-
-            if (Math.abs(trainingMSE - desiredError) < desiredPrecision) {
+            if (Double.isNaN(trainingMSE) || Math.abs(trainingMSE - desiredError) < desiredPrecision) {
                 break;
             }
 
@@ -95,6 +60,8 @@ public class Backpropagation extends AbstractBackpropagation {
         }
         return trainingMSE;
     }
+
+
 
     private double[] doBackpropagation(INeuralNetwork neuralNetwork, RealMatrix outputDeltaMatrix, RealMatrix[] allLayerOutputs) {
         RealMatrix outputLayerError = new Array2DRowRealMatrix(
@@ -151,5 +118,53 @@ public class Backpropagation extends AbstractBackpropagation {
         double[] weights = getWeights(calculateNumberOfWeights(neuralNetwork.getNeuralNetworkArchitecture()),
                 neuralNetwork.getWeightsMatrix());
         return weights;
+    }
+
+    private RealMatrix[] createOutputMatrices(int[] nnArchitecture, List<DatasetEntry> batch) {
+        RealMatrix[] outputMatrices = new RealMatrix[nnArchitecture.length];
+        for (int i = 0; i < nnArchitecture.length - 1; ++i) {
+            outputMatrices[i] = new Array2DRowRealMatrix(batch.size(), nnArchitecture[i] + 1);
+        }
+        outputMatrices[outputMatrices.length - 1] = new Array2DRowRealMatrix(batch.size(), nnArchitecture[nnArchitecture.length - 1]);
+
+        return outputMatrices;
+    }
+
+    private RealVector fillOutputMatrices(RealMatrix outputDeltaMatrix, RealMatrix[] layerOutputsByBatch, int outputSize, List<DatasetEntry> batch) {
+        RealVector totalErrorByNeuron = new ArrayRealVector(outputSize);
+        for (int i = 0; i < batch.size(); ++i) {
+            DatasetEntry entry = batch.get(i);
+            double[] output = neuralNetwork.forward(entry.getInput());
+            RealVector calculatedOutput = new ArrayRealVector(output);
+            RealVector expectedOutput = new ArrayRealVector(entry.getOutput());
+            RealVector error = expectedOutput.subtract(calculatedOutput);
+            outputDeltaMatrix.setRowVector(i, error);
+            totalErrorByNeuron = totalErrorByNeuron.add(error.ebeMultiply(error));
+
+            double[][] outputOfLayers = neuralNetwork.getOutputOfLayers();
+            for (int j = 0; j < outputOfLayers.length; ++j) {
+                layerOutputsByBatch[j].setRow(i, outputOfLayers[j]);
+            }
+        }
+        return totalErrorByNeuron;
+    }
+
+    private double calculateMse(RealVector errorVector, int setSize){
+        double sum = 0;
+        for (double error : errorVector.toArray()) {
+            sum += error;
+        }
+        return sum / setSize;
+    }
+
+    private RealVector fillErrorVector(int size, List<DatasetEntry> dataset, NeuralNetwork neuralNetwork) {
+        RealVector errorVector = new ArrayRealVector(size);
+        for (DatasetEntry entry : dataset) {
+            RealVector output = new ArrayRealVector(neuralNetwork.forward(entry.getInput()));
+            RealVector expectedOutput = new ArrayRealVector(entry.getOutput());
+            RealVector error = output.subtract(expectedOutput);
+            errorVector = errorVector.add(error.ebeMultiply(error));
+        }
+        return errorVector;
     }
 }
