@@ -15,6 +15,7 @@ import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.observers.evaluators.LoggerEvaluationObserver;
 import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
 import hr.fer.zemris.nnao.observers.ga.FileLoggerObserver;
+import hr.fer.zemris.nnao.observers.ga.GraphDataObserver;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -28,9 +29,9 @@ public class MainIris {
 
     public static final double solutionDelta = 0.01;
     public static final int populationSize = 12;
-    public static final int maxIter = 1;
+    public static final int maxIter = 50;
     public static final int minLayersNum = 3;
-    public static final int maxLayersNum = 5;
+    public static final int maxLayersNum = 3;
     public static final int maxLayerSize = 80;
     public static final int minLayerSize = 40;
     public static final int inputSize = 4;
@@ -54,13 +55,14 @@ public class MainIris {
         AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
 
         OutputStream os = Files.newOutputStream(Paths.get("./iris_result.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        OutputStream os2 = Files.newOutputStream(Paths.get("./iris_graph_data.csv"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
 
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
+        ga.addObserver(new GraphDataObserver(new BufferedOutputStream(os2)));
 
         AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset, 50, 100, desiredError, desiredPrecision, 2);
-//                AbstractPopulationEvaluator evaluation = new BPPopulationEvaluator(dataset,learningRate,maxIterBP,desiredError,desiredPrecision,batchSize,trainPercentage);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
@@ -70,7 +72,10 @@ public class MainIris {
                 evaluation
         );
 
+        os2.flush();
+        os.flush();
         os.close();
+        os2.close();
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.getNumberOfLayers(); ++i) {

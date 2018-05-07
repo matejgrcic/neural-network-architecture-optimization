@@ -1,0 +1,196 @@
+#Iteration: 0
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 33.16263146052905
+#Iteration: 1
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 33.16263146052905
+#Iteration: 2
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.8015165421617606
+#Iteration: 3
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.5940134292142559
+#Iteration: 4
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.5940134292142559
+#Iteration: 5
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.5397117627397091
+#Iteration: 6
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.475557724927351
+#Iteration: 7
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.475557724927351
+#Iteration: 8
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.4488103400154697
+#Iteration: 9
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.4488103400154697
+#Iteration: 10
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.40116904583185814
+#Iteration: 11
+	Best fitness: 0.07166822365370021
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3761098288515456
+#Iteration: 12
+	Best fitness: 0.05590260023480602
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3761098288515455
+#Iteration: 13
+	Best fitness: 0.05590260023480602
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3277388724747852
+#Iteration: 14
+	Best fitness: 0.05590260023480602
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.3277388724747852
+#Iteration: 15
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.30729035041068037
+#Iteration: 16
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 17
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 18
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 19
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 20
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 21
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 22
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 23
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2639757069702481
+#Iteration: 24
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2603532771582235
+#Iteration: 25
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2570609709302234
+#Iteration: 26
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.25706097093022345
+#Iteration: 27
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.25541013920220307
+#Iteration: 28
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.23107781556779194
+#Iteration: 29
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.22997602808349601
+#Iteration: 30
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.2088567180649681
+#Iteration: 31
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.18548036650180108
+#Iteration: 32
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.18528571247203973
+#Iteration: 33
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.16190157380409662
+#Iteration: 34
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.137899411491799
+#Iteration: 35
+	Best fitness: 0.049376048230537574
+	Best architecture: 3: [4/ReLU] / [54/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.13776419935075776
+#Iteration: 36
+	Best fitness: 0.04936664807844969
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.11523729767917129
+#Iteration: 37
+	Best fitness: 0.04936664807844969
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.0906828553860768
+#Iteration: 38
+	Best fitness: 0.04936664807844969
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.06926455241149083
+#Iteration: 39
+	Best fitness: 0.04936664807844969
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.066462039619704
+#Iteration: 40
+	Best fitness: 0.04936664807844969
+	Best architecture: 3: [4/Identity] / [72/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.066462039619704
+#Iteration: 41
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.066462039619704
+#Iteration: 42
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.06236959702329467
+#Iteration: 43
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.06236959702329467
+#Iteration: 44
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.060442995139372936
+#Iteration: 45
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.057806508419266656
+#Iteration: 46
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.05642714185239972
+#Iteration: 47
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.05579547258746423
+#Iteration: 48
+	Best fitness: 0.036873453208643533
+	Best architecture: 3: [4/Identity] / [41/Sigmoid] / [1/Identity] / 
+	Average population fitness: 0.054297010680710585
