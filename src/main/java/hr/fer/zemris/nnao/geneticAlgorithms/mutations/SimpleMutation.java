@@ -12,33 +12,90 @@ public class SimpleMutation implements Mutation {
 
     private static final Random rand = new Random();
 
-    private double mutationProbability;
     private int minLayerSize;
     private int maxLayerSize;
+    private int minLayerNumber;
+    private int maxLayerNumber;
 
-    public SimpleMutation(double mutationProbability, int minLayerSize, int maxLayerSize) {
-        this.mutationProbability = mutationProbability;
+    private double layerSizeMutationProbability;
+    private double layerAdditionMutationProbability;
+    private double layerSubtractionMutationProbability;
+    private double activationMutationProbability;
+
+    public SimpleMutation(int minLayerSize, int maxLayerSize, int minLayerNumber,
+                          int maxLayerNumber, double layerSizeMutationProbability,
+                          double layerAdditionMutationProbability, double layerSubtractionMutationProbability,
+                          double activationMutationProbability) {
         this.minLayerSize = minLayerSize;
         this.maxLayerSize = maxLayerSize;
+        this.minLayerNumber = minLayerNumber;
+        this.maxLayerNumber = maxLayerNumber;
+        this.layerSizeMutationProbability = layerSizeMutationProbability;
+        this.layerAdditionMutationProbability = layerAdditionMutationProbability;
+        this.layerSubtractionMutationProbability = layerSubtractionMutationProbability;
+        this.activationMutationProbability = activationMutationProbability;
     }
 
     @Override
     public Solution mutate(Solution solution) {
-        // mutiraj slojeve
-        for(int i = 0; i < solution.getNumberOfLayers()-2; ++i) {
-            if (rand.nextDouble() > mutationProbability) {
-                continue;
-            }
-            solution.getArchitecture()[i+1] = rand.nextInt(maxLayerSize - minLayerSize + 1) + minLayerSize;
+
+        // mutate layers
+        if (rand.nextDouble() < layerSizeMutationProbability) {
+            int index = rand.nextInt(solution.getArchitecture().length - 2) + 1;
+            solution.getArchitecture()[index] = createRandomLayer(minLayerSize, maxLayerSize);
         }
-        //mutiraj arhitekturu
-        for(int i = 0; i < solution.getNumberOfLayers(); ++i) {
-            if (rand.nextDouble() > mutationProbability) {
-                continue;
-            }
-            solution.getActivations()[i] = ActivationFunctions.allActivations[rand.nextInt(ActivationFunctions.allActivations.length)];
+        // mutate activations
+        if (rand.nextDouble() < activationMutationProbability) {
+            int index = rand.nextInt(solution.getActivations().length);
+            solution.getActivations()[index] = createRandomActivation();
         }
-        double[] weights = getWeights(calculateNumberOfWeights(solution.getArchitecture()),createWeightMatrices(solution.getArchitecture()));
-        return new Solution(solution.getActivations(),solution.getNumberOfLayers(),solution.getArchitecture(), weights);
+
+        // add layer
+        if (solution.getNumberOfLayers() < maxLayerNumber && rand.nextDouble() < layerAdditionMutationProbability) {
+            int index = rand.nextInt(solution.getArchitecture().length - 2) + 1;
+            int[] layers = new int[solution.getNumberOfLayers() + 1];
+            System.arraycopy(solution.getArchitecture(), 0, layers, 0, index);
+            layers[index] = createRandomLayer(minLayerSize, maxLayerSize);
+            System.arraycopy(solution.getArchitecture(), index, layers,
+                    index + 1, solution.getNumberOfLayers() - index);
+
+            IActivation[] activationsArr = new IActivation[solution.getActivations().length + 1];
+            System.arraycopy(solution.getActivations(), 0, activationsArr, 0, index);
+            activationsArr[index] = createRandomActivation();
+            System.arraycopy(solution.getActivations(), index, activationsArr,
+                    index + 1, solution.getNumberOfLayers() - index);
+
+            solution.setNumberOfLayers(layers.length);
+            solution.setArchitecture(layers, activationsArr);
+        }
+
+        // remove layer
+        if (solution.getNumberOfLayers() > minLayerNumber && rand.nextDouble() < layerSubtractionMutationProbability) {
+            int index = rand.nextInt(solution.getArchitecture().length - 2) + 1;
+            int[] layers = new int[solution.getNumberOfLayers() - 1];
+            System.arraycopy(solution.getArchitecture(), 0, layers, 0, index);
+            System.arraycopy(solution.getArchitecture(), index + 1, layers,
+                    index, solution.getNumberOfLayers() - index - 1);
+
+            IActivation[] activationsArr = new IActivation[solution.getActivations().length - 1];
+            System.arraycopy(solution.getActivations(), 0, activationsArr, 0, index);
+            System.arraycopy(solution.getActivations(), index + 1, activationsArr,
+                    index, solution.getNumberOfLayers() - index - 1);
+
+            solution.setNumberOfLayers(layers.length);
+            solution.setArchitecture(layers, activationsArr);
+        }
+
+        double[] weights = getWeights(calculateNumberOfWeights(solution.getArchitecture()), createWeightMatrices(solution.getArchitecture()));
+        solution.setWeights(weights);
+        return solution;
+    }
+
+    private static int createRandomLayer(int minLayerSize, int maxLayerSize) {
+        return rand.nextInt(maxLayerSize - minLayerSize + 1) + minLayerSize;
+    }
+
+    private static IActivation createRandomActivation() {
+        return ActivationFunctions.allActivations[rand.nextInt(ActivationFunctions.allActivations.length)];
     }
 }

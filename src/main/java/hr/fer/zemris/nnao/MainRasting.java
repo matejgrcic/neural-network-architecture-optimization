@@ -20,7 +20,7 @@ import java.util.List;
 
 public class MainRasting {
 
-    public static final double  solutionDelta = 0.01;
+    public static final double solutionDelta = 0.01;
     public static final int populationSize = 10;
     public static final int maxIter = 70;
     public static final int minLayersNum = 3;
@@ -36,10 +36,13 @@ public class MainRasting {
     public static final double desiredPrecision = 1E-3;
     public static final boolean selectDuplicates = false;
 
-    public static final double learningRate = 1E-5;
-    public static final double trainPercentage = 0.9;
-    public static final int batchSize = 30;
-    public static final int maxIterBP = 50_000;
+    public static final double weightsFactor = 1E-4;
+    public static final double layersFactor = 1E-2;
+    public static final double errorFactor = 1.;
+    public static final double addLayerP = 0.07;
+    public static final double removeLayerP = 0.07;
+    public static final double changeLayerP = 0.2;
+    public static final double changeActivationP = 0.2;
 
     public static void main(String[] args) throws IOException {
 
@@ -49,13 +52,15 @@ public class MainRasting {
 
         ga.addObserver(new ConsoleLoggerObserver());
 
-        AbstractPopulationEvaluator evaluator = new PSOPopulationEvaluator(dataset,50,100,desiredError, desiredPrecision, 1);
+        AbstractPopulationEvaluator evaluator = new PSOPopulationEvaluator(dataset, 0.8, 50, 100, desiredError, desiredPrecision, 1,
+                errorFactor, weightsFactor, layersFactor);
         evaluator.addObserver(new LoggerEvaluationObserver());
 
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
-                new SimpleMutation(mutationProb, minLayerSize, maxLayerSize),
+                new SimpleMutation(minLayerSize, maxLayerSize, minLayersNum, maxLayersNum,
+                        changeLayerP, addLayerP, removeLayerP, changeActivationP),
                 new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
 //                new BPPopulationEvaluator(dataset, learningRate, maxIterBP, desiredError, desiredPrecision, batchSize, trainPercentage)
                 evaluator

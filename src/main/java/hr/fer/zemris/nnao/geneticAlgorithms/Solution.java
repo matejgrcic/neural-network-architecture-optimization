@@ -36,6 +36,15 @@ public class Solution {
         return architecture;
     }
 
+    public void setArchitecture(int[] layers, IActivation[] activations) {
+        this.architecture = layers;
+        this.activations = activations;
+    }
+
+    public void setNumberOfLayers(int numberOfLayers) {
+        this.numberOfLayers = numberOfLayers;
+    }
+
     public double[] getWeights() {
         return weights;
     }

@@ -25,7 +25,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class MainIrisGeneration {
-    public static final double  solutionDelta = 0.01;
+    public static final double solutionDelta = 0.01;
     public static final int populationSize = 20;
     public static final int maxIter = 5;
     public static final int minLayersNum = 3;
@@ -41,10 +41,13 @@ public class MainIrisGeneration {
     public static final double desiredPrecision = 1e-5;
     public static final boolean selectDuplicates = false;
 
-    public static final double learningRate = 1E-4;
-    public static final double trainPercentage = 0.7;
-    public static final int batchSize = 30;
-    public static final int maxIterBP = 50_000;
+    public static final double weightsFactor = 1E-4;
+    public static final double layersFactor = 1E-2;
+    public static final double errorFactor = 1.;
+    public static final double addLayerP = 0.07;
+    public static final double removeLayerP = 0.07;
+    public static final double changeLayerP = 0.2;
+    public static final double changeActivationP = 0.2;
 
     public static void main(String[] args) throws IOException {
 
@@ -58,13 +61,14 @@ public class MainIrisGeneration {
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
 
-        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset,50,100,desiredError,desiredPrecision,1);
+        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset, 0.8, 50, 100, desiredError, desiredPrecision, 1, errorFactor, weightsFactor, layersFactor);
         //        AbstractPopulationEvaluator evaluation = new BPPopulationEvaluator(dataset,learningRate,maxIterBP,desiredError,desiredPrecision,batchSize,trainPercentage);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
-                new SimpleMutation(mutationProb, minLayerSize, maxLayerSize),
+                new SimpleMutation(minLayerSize, maxLayerSize, minLayersNum, maxLayersNum,
+                        changeLayerP, addLayerP, removeLayerP, changeActivationP),
                 new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
                 evaluation
         );
@@ -88,16 +92,16 @@ public class MainIrisGeneration {
 
             double x = Math.round(res[0]);
             double target = d.getOutput()[0];
-            System.out.println("Expected: "+target + " Dobiveno: "+ x);
-            if(target != x) {
+            System.out.println("Expected: " + target + " Dobiveno: " + x);
+            if (target != x) {
                 cnt++;
             }
 
 
         }
-        System.out.println("Falilo: "+cnt);
+        System.out.println("Falilo: " + cnt);
 
-        for(double x : s.getWeights()){
+        for (double x : s.getWeights()) {
             System.out.println(x);
         }
     }

@@ -31,22 +31,25 @@ public class MainIris {
     public static final int populationSize = 12;
     public static final int maxIter = 50;
     public static final int minLayersNum = 3;
-    public static final int maxLayersNum = 3;
+    public static final int maxLayersNum = 5;
     public static final int maxLayerSize = 80;
     public static final int minLayerSize = 40;
     public static final int inputSize = 4;
     public static final int outputSize = 1;
     public static final int numberOfSelectionCandidates = 4;
-    public static final double mutationProb = 0.1;
     public static final double desiredError = 0.;
     public static final double desiredFitness = 0.;
     public static final double desiredPrecision = 1e-5;
     public static final boolean selectDuplicates = false;
 
-    public static final double learningRate = 1E-3;
-    public static final double trainPercentage = 0.7;
-    public static final int batchSize = 30;
-    public static final int maxIterBP = 20_000;
+    public static final double weightsFactor = 1E-4;
+    public static final double layersFactor = 1E-2;
+    public static final double errorFactor = 1.;
+    public static final double addLayerP = 0.1;
+    public static final double removeLayerP = 0.1;
+    public static final double changeLayerP = 0.2;
+    public static final double changeActivationP = 0.2;
+
 
     public static void main(String[] args) throws IOException {
 
@@ -62,12 +65,15 @@ public class MainIris {
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
         ga.addObserver(new GraphDataObserver(new BufferedOutputStream(os2)));
 
-        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset, 50, 100, desiredError, desiredPrecision, 2);
+        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset, 0.8,
+                50, 100, desiredError, desiredPrecision, 3,
+                errorFactor, weightsFactor, layersFactor);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
-                new SimpleMutation(mutationProb, minLayerSize, maxLayerSize),
+                new SimpleMutation(minLayerSize, maxLayerSize, minLayersNum, maxLayersNum,
+                        changeLayerP, addLayerP, removeLayerP, changeActivationP),
                 new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
                 evaluation
         );
@@ -90,8 +96,8 @@ public class MainIris {
         System.out.println("Broj pogresaka najbolje: " + calculateMisses(dataset, nn));
 
         List<Solution> population = ga.getPopulation();
-        for(int i=0; i<population.size();++i) {
-            System.out.println((i+1)+". "+population.get(i).toString()+ " err: "+population.get(i).getFitness());
+        for (int i = 0; i < population.size(); ++i) {
+            System.out.println((i + 1) + ". " + population.get(i).toString() + " err: " + population.get(i).getFitness());
         }
     }
 
