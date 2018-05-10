@@ -54,22 +54,20 @@ public class MainIris {
     public static void main(String[] args) throws IOException {
 
         List<DatasetEntry> dataset = DatasetUtils.createIrisDataset();
+        int index = (int) Math.round(dataset.size() * 0.85);
+        List<DatasetEntry> trainingAndValidationDataset = dataset.subList(0,index);
+        List<DatasetEntry> testDataset = dataset.subList(index,dataset.size());
 
         AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
-
-        OutputStream os = Files.newOutputStream(Paths.get("./iris_result.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-        OutputStream os2 = Files.newOutputStream(Paths.get("./iris_graph_data.csv"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-
+        OutputStream os = Files.newOutputStream(Paths.get("./iris_graph_data.csv"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
-        ga.addObserver(new GraphDataObserver(new BufferedOutputStream(os2)));
 
-        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset, 0.8,
-                50, 100, desiredError, desiredPrecision, 3,
-                errorFactor, weightsFactor, layersFactor);
+        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(trainingAndValidationDataset, 0.83, 50,
+                100, desiredError, desiredPrecision, 3, errorFactor, weightsFactor, layersFactor);
         evaluation.addObserver(new LoggerEvaluationObserver());
-        Solution s = ga.run(
+        Solution solution = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
                 new SimpleMutation(minLayerSize, maxLayerSize, minLayersNum, maxLayersNum,
@@ -78,22 +76,20 @@ public class MainIris {
                 evaluation
         );
 
-        os2.flush();
         os.flush();
         os.close();
-        os2.close();
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < s.getNumberOfLayers(); ++i) {
-            sb.append(s.getArchitecture()[i]);
-            sb.append(s.getActivations()[i] + " ");
+        for (int i = 0; i < solution.getNumberOfLayers(); ++i) {
+            sb.append(solution.getArchitecture()[i]);
+            sb.append(solution.getActivations()[i] + " ");
         }
-        System.out.println(sb.toString() + "Error: " + s.getFitness());
+        System.out.println(sb.toString() + "Error: " + solution.getFitness());
 
 
-        NeuralNetwork nn = new NeuralNetwork(s.getArchitecture(), s.getActivations());
-        nn.setWeights(s.getWeights());
-        System.out.println("Broj pogresaka najbolje: " + calculateMisses(dataset, nn));
+        NeuralNetwork nn = new NeuralNetwork(solution.getArchitecture(), solution.getActivations());
+        nn.setWeights(solution.getWeights());
+        System.out.println("Broj pogresaka najbolje: " + calculateMisses(testDataset, nn));
 
         List<Solution> population = ga.getPopulation();
         for (int i = 0; i < population.size(); ++i) {

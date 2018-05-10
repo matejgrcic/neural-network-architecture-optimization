@@ -19,7 +19,7 @@ public class GraphDataObserver implements GAObserver {
         StringBuilder sb = new StringBuilder();
         sb.append(iteration+",");
         sb.append(geneticAlgorithm.getBestFitness()+",");
-        sb.append(geneticAlgorithm.getAverageFitness());
+        sb.append(geneticAlgorithm.getAverageFitness()+"\n");
         try {
             outputStream.write(sb.toString().getBytes());
             outputStream.flush();

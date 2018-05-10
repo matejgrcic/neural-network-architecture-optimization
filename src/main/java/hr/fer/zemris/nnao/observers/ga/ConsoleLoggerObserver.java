@@ -16,6 +16,6 @@ public class ConsoleLoggerObserver implements GAObserver {
         logger.append("\tBest architecture: "+geneticAlgorithm.getBestSolution().toString()+"\n");
         logger.append("\tAverage population fitness: "+geneticAlgorithm.getAverageFitness()+"\n");
 
-        System.out.println(logger.toString());
+        System.out.print(logger.toString());
     }
 }
