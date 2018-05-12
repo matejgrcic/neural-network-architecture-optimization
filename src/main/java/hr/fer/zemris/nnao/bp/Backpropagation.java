@@ -50,6 +50,7 @@ public class Backpropagation extends AbstractBackpropagation {
             System.out.println("Validation error: " + validationMSE);
 
             if (lastIterValMSE <= validationMSE && currentIteration > maxIteration / 2) {
+                validationMSE = lastIterValMSE;
                 break;
             }
 
@@ -59,7 +60,7 @@ public class Backpropagation extends AbstractBackpropagation {
 
             ++currentIteration;
         }
-        return trainingMSE;
+        return validationMSE;
     }
 
 
