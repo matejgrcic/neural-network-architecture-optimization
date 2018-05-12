@@ -35,25 +35,7 @@ public class PopulationGenerator implements IPopulationGenerator {
     public List<Solution> createInitialPopulation(int populationSize) {
         List<Solution> population = new ArrayList<>(populationSize);
         for (int i = 0; i < populationSize; ++i) {
-            int numberOfLayers = rand.nextInt(maxLayersNum - minLayersNum + 1) + minLayersNum;
-            int[] architecture = new int[numberOfLayers];
-            for (int j = 0; j < numberOfLayers; ++j) {
-                architecture[j] = rand.nextInt(maxLayerSize - minLayerSize + 1) + minLayerSize;
-            }
-            IActivation[] activations = new IActivation[numberOfLayers];
-            activations[0] = ActivationFunctions.Identity;
-            activations[numberOfLayers - 1] = ActivationFunctions.Identity;
-            IActivation[] allActivations = ActivationFunctions.allActivations;
-
-            for (int j = 1; j < numberOfLayers; ++j) {
-                activations[j] = allActivations[rand.nextInt(allActivations.length)];
-            }
-
-            architecture[0] = inputLayerSize;
-            architecture[architecture.length - 1] = outputLayerSize;
-
-            double[] weights = createRandomArray(calculateNumberOfWeights(architecture));
-            population.add(new Solution(activations, numberOfLayers, architecture, weights));
+           population.add(createIndividual());
         }
 
         return population;

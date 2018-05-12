@@ -13,7 +13,6 @@ public class ProportionalSelection implements Selection {
     public Solution[] selectParents(List<Solution> population) {
 
         double fitnessSum = 0;
-
         for (Solution solution : population) {
             fitnessSum += solution.getFitness();
         }
@@ -33,9 +32,6 @@ public class ProportionalSelection implements Selection {
                 parents[i] = population.get(population.size() - 1);
             }
         }
-
-//        System.err.println("Parents: " + parents[0].toString()+ " "+ parents[1].toString());
-
         return parents;
     }
 }
