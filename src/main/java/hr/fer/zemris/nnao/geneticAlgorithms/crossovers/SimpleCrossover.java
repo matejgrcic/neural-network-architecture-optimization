@@ -23,12 +23,12 @@ public class SimpleCrossover implements Crossover {
         List<IActivation> activations = new ArrayList<>();
 
         for (int i = 0; i<crossoverPoint; ++i) {
-            layers.add(first.getArchitecture()[i]);
+            layers.add(first.getLayers()[i]);
             activations.add(first.getActivations()[i]);
         }
 
         for (int i = crossoverPoint; i<second.getNumberOfLayers(); ++i) {
-            layers.add(second.getArchitecture()[i]);
+            layers.add(second.getLayers()[i]);
             activations.add(second.getActivations()[i]);
         }
 

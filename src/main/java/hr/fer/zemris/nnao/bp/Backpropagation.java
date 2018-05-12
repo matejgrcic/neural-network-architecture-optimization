@@ -19,7 +19,7 @@ public class Backpropagation extends AbstractBackpropagation {
 
     public Backpropagation(List<DatasetEntry> trainingSet, List<DatasetEntry> validationSet,
                            double learningRate, long maxIteration, double desiredError,
-                           double desiredPrecision, NeuralNetwork neuralNetwork, int batchSize) {
+                           double desiredPrecision, INeuralNetwork neuralNetwork, int batchSize) {
 
         super(trainingSet, validationSet, learningRate, maxIteration,
                 desiredError, desiredPrecision, neuralNetwork, batchSize);
@@ -37,7 +37,8 @@ public class Backpropagation extends AbstractBackpropagation {
                 RealMatrix[] layerOutputsByBatch = createOutputMatrices(nnArchitecture, batch);
                 totalErrorByNeuron = fillOutputMatrices(outputDeltaMatrix, layerOutputsByBatch, nnArchitecture[nnArchitecture.length - 1], batch);
 
-                doBackpropagation(neuralNetwork, outputDeltaMatrix, layerOutputsByBatch);
+                double[] weights = doBackpropagation(neuralNetwork, outputDeltaMatrix, layerOutputsByBatch);
+                neuralNetwork.setWeights(weights);
             }
             trainingMSE = calculateMse(totalErrorByNeuron,trainingSet.size());
             System.out.println("Iter : " + currentIteration + " MSError je: " + trainingMSE);
@@ -157,7 +158,7 @@ public class Backpropagation extends AbstractBackpropagation {
         return sum / setSize;
     }
 
-    private RealVector fillErrorVector(int size, List<DatasetEntry> dataset, NeuralNetwork neuralNetwork) {
+    private RealVector fillErrorVector(int size, List<DatasetEntry> dataset, INeuralNetwork neuralNetwork) {
         RealVector errorVector = new ArrayRealVector(size);
         for (DatasetEntry entry : dataset) {
             RealVector output = new ArrayRealVector(neuralNetwork.forward(entry.getInput()));

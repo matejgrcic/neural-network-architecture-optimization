@@ -9,14 +9,14 @@ public class Solution {
 
     private IActivation[] activations;
     private int numberOfLayers;
-    private int[] architecture;
+    private int[] layers;
     private double[] weights;
     private double fitness;
 
-    public Solution(IActivation[] activations, int numberOfLayers, int[] architecture, double[] weights) {
+    public Solution(IActivation[] activations, int numberOfLayers, int[] layers, double[] weights) {
         this.activations = activations;
         this.numberOfLayers = numberOfLayers;
-        this.architecture = architecture;
+        this.layers = layers;
         this.weights = weights;
     }
 
@@ -32,12 +32,12 @@ public class Solution {
         return numberOfLayers;
     }
 
-    public int[] getArchitecture() {
-        return architecture;
+    public int[] getLayers() {
+        return layers;
     }
 
     public void setArchitecture(int[] layers, IActivation[] activations) {
-        this.architecture = layers;
+        this.layers = layers;
         this.activations = activations;
     }
 
@@ -61,7 +61,7 @@ public class Solution {
     public String toString() {
         StringBuilder sb = new StringBuilder(numberOfLayers+": ");
         for(int i = 0; i<numberOfLayers; ++i) {
-            sb.append("["+architecture[i]+ "/"+activations[i]+"] / ");
+            sb.append("["+layers[i]+ "/"+activations[i]+"] / ");
         }
         return sb.toString();
     }
@@ -74,9 +74,8 @@ public class Solution {
         Solution solution = (Solution) o;
 
         if (numberOfLayers != solution.numberOfLayers) return false;
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
         if (!Arrays.equals(activations, solution.activations)) return false;
-        if (!Arrays.equals(architecture, solution.architecture)) return false;
+        if (!Arrays.equals(layers, solution.layers)) return false;
         return Arrays.equals(weights, solution.weights);
     }
 
@@ -84,7 +83,7 @@ public class Solution {
     public int hashCode() {
         int result = Arrays.hashCode(activations);
         result = 31 * result + numberOfLayers;
-        result = 31 * result + Arrays.hashCode(architecture);
+        result = 31 * result + Arrays.hashCode(layers);
         return result;
     }
 }

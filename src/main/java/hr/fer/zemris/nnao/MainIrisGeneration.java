@@ -7,10 +7,12 @@ import hr.fer.zemris.nnao.geneticAlgorithms.GenerationGA;
 import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.AbstractPopulationEvaluator;
+import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.BPPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
+import hr.fer.zemris.nnao.neuralNetwork.INeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.observers.evaluators.LoggerEvaluationObserver;
 import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
@@ -52,6 +54,9 @@ public class MainIrisGeneration {
     public static void main(String[] args) throws IOException {
 
         List<DatasetEntry> dataset = DatasetUtils.createIrisDataset();
+        int index = (int) Math.round(dataset.size() * 0.85);
+        List<DatasetEntry> trainingAndValidationDataset = dataset.subList(0, index);
+        List<DatasetEntry> testDataset = dataset.subList(index, dataset.size());
 
         AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
 
@@ -61,8 +66,9 @@ public class MainIrisGeneration {
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
 
-        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(dataset, 0.8, 50, 100, desiredError, desiredPrecision, 1, errorFactor, weightsFactor, layersFactor);
-        //        AbstractPopulationEvaluator evaluation = new BPPopulationEvaluator(dataset,learningRate,maxIterBP,desiredError,desiredPrecision,batchSize,trainPercentage);
+        AbstractPopulationEvaluator evaluation = new BPPopulationEvaluator(trainingAndValidationDataset, 1E-6,
+                10000, desiredError, desiredPrecision, 30, 0.83,
+                3, errorFactor, weightsFactor, layersFactor);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution s = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
@@ -77,12 +83,12 @@ public class MainIrisGeneration {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.getNumberOfLayers(); ++i) {
-            sb.append(s.getArchitecture()[i]);
+            sb.append(s.getLayers()[i]);
             sb.append(s.getActivations()[i] + " ");
         }
         System.out.println(sb.toString() + "Error: " + s.getFitness());
 
-        NeuralNetwork nn = new NeuralNetwork(s.getArchitecture(), s.getActivations());
+        INeuralNetwork nn = new NeuralNetwork(s.getLayers(), s.getActivations());
         nn.setWeights(s.getWeights());
 
         int cnt = 0;

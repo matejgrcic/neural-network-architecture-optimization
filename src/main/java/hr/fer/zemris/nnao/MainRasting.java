@@ -11,6 +11,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
+import hr.fer.zemris.nnao.neuralNetwork.INeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.observers.evaluators.LoggerEvaluationObserver;
 import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
@@ -68,12 +69,12 @@ public class MainRasting {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.getNumberOfLayers(); ++i) {
-            sb.append(s.getArchitecture()[i]);
+            sb.append(s.getLayers()[i]);
             sb.append(s.getActivations()[i] + " ");
         }
         System.out.println(sb.toString() + "Error: " + s.getFitness());
 
-        NeuralNetwork nn = new NeuralNetwork(s.getArchitecture(), s.getActivations());
+        INeuralNetwork nn = new NeuralNetwork(s.getLayers(), s.getActivations());
         nn.setWeights(s.getWeights());
 
         double sum = 0.;

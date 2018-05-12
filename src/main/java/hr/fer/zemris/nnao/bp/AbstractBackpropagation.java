@@ -1,6 +1,7 @@
 package hr.fer.zemris.nnao.bp;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
+import hr.fer.zemris.nnao.neuralNetwork.INeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 
 import java.util.ArrayList;
@@ -17,13 +18,13 @@ public abstract class AbstractBackpropagation {
     protected long currentIteration = 1;
     protected double trainingMSE;
     protected double validationMSE;
-    protected NeuralNetwork neuralNetwork;
+    protected INeuralNetwork neuralNetwork;
     protected int batchSize;
     protected DatasetEntry[] datasetArray;
 
     public AbstractBackpropagation(List<DatasetEntry> trainingSet, List<DatasetEntry> validationSet,
                                    double learningRate, long maxIteration, double desiredError,
-                                   double desiredPrecision, NeuralNetwork neuralNetwork, int batchSize) {
+                                   double desiredPrecision, INeuralNetwork neuralNetwork, int batchSize) {
         this.trainingSet = trainingSet;
         this.validationSet = validationSet;
         this.learningRate = learningRate;

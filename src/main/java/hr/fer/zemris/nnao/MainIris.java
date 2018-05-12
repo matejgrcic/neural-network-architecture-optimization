@@ -11,6 +11,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
+import hr.fer.zemris.nnao.neuralNetwork.INeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.observers.evaluators.LoggerEvaluationObserver;
 import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
@@ -81,13 +82,13 @@ public class MainIris {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < solution.getNumberOfLayers(); ++i) {
-            sb.append(solution.getArchitecture()[i]);
+            sb.append(solution.getLayers()[i]);
             sb.append(solution.getActivations()[i] + " ");
         }
         System.out.println(sb.toString() + "Error: " + solution.getFitness());
 
 
-        NeuralNetwork nn = new NeuralNetwork(solution.getArchitecture(), solution.getActivations());
+        INeuralNetwork nn = new NeuralNetwork(solution.getLayers(), solution.getActivations());
         nn.setWeights(solution.getWeights());
         System.out.println("Broj pogresaka najbolje: " + calculateMisses(testDataset, nn));
 
@@ -97,7 +98,7 @@ public class MainIris {
         }
     }
 
-    private static int calculateMisses(List<DatasetEntry> dataset, NeuralNetwork nn) {
+    private static int calculateMisses(List<DatasetEntry> dataset, INeuralNetwork nn) {
         int cnt = 0;
         for (DatasetEntry d : dataset) {
             double[] res = nn.forward(d.getInput());

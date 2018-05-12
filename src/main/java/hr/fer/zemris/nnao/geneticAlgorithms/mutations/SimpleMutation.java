@@ -19,12 +19,12 @@ public class SimpleMutation implements Mutation {
 
     private double layerSizeMutationProbability;
     private double layerAdditionMutationProbability;
-    private double layerSubtractionMutationProbability;
+    private double layerRemoveMutationProbability;
     private double activationMutationProbability;
 
     public SimpleMutation(int minLayerSize, int maxLayerSize, int minLayerNumber,
                           int maxLayerNumber, double layerSizeMutationProbability,
-                          double layerAdditionMutationProbability, double layerSubtractionMutationProbability,
+                          double layerAdditionMutationProbability, double layerRemoveMutationProbability,
                           double activationMutationProbability) {
         this.minLayerSize = minLayerSize;
         this.maxLayerSize = maxLayerSize;
@@ -32,7 +32,7 @@ public class SimpleMutation implements Mutation {
         this.maxLayerNumber = maxLayerNumber;
         this.layerSizeMutationProbability = layerSizeMutationProbability;
         this.layerAdditionMutationProbability = layerAdditionMutationProbability;
-        this.layerSubtractionMutationProbability = layerSubtractionMutationProbability;
+        this.layerRemoveMutationProbability = layerRemoveMutationProbability;
         this.activationMutationProbability = activationMutationProbability;
     }
 
@@ -41,8 +41,8 @@ public class SimpleMutation implements Mutation {
 
         // mutate layers
         if (rand.nextDouble() < layerSizeMutationProbability) {
-            int index = rand.nextInt(solution.getArchitecture().length - 2) + 1;
-            solution.getArchitecture()[index] = createRandomLayer(minLayerSize, maxLayerSize);
+            int index = rand.nextInt(solution.getLayers().length - 2) + 1;
+            solution.getLayers()[index] = createRandomLayer(minLayerSize, maxLayerSize);
         }
         // mutate activations
         if (rand.nextDouble() < activationMutationProbability) {
@@ -52,11 +52,11 @@ public class SimpleMutation implements Mutation {
 
         // add layer
         if (solution.getNumberOfLayers() < maxLayerNumber && rand.nextDouble() < layerAdditionMutationProbability) {
-            int index = rand.nextInt(solution.getArchitecture().length - 2) + 1;
+            int index = rand.nextInt(solution.getLayers().length - 2) + 1;
             int[] layers = new int[solution.getNumberOfLayers() + 1];
-            System.arraycopy(solution.getArchitecture(), 0, layers, 0, index);
+            System.arraycopy(solution.getLayers(), 0, layers, 0, index);
             layers[index] = createRandomLayer(minLayerSize, maxLayerSize);
-            System.arraycopy(solution.getArchitecture(), index, layers,
+            System.arraycopy(solution.getLayers(), index, layers,
                     index + 1, solution.getNumberOfLayers() - index);
 
             IActivation[] activationsArr = new IActivation[solution.getActivations().length + 1];
@@ -70,11 +70,11 @@ public class SimpleMutation implements Mutation {
         }
 
         // remove layer
-        if (solution.getNumberOfLayers() > minLayerNumber && rand.nextDouble() < layerSubtractionMutationProbability) {
-            int index = rand.nextInt(solution.getArchitecture().length - 2) + 1;
+        if (solution.getNumberOfLayers() > minLayerNumber && rand.nextDouble() < layerRemoveMutationProbability) {
+            int index = rand.nextInt(solution.getLayers().length - 2) + 1;
             int[] layers = new int[solution.getNumberOfLayers() - 1];
-            System.arraycopy(solution.getArchitecture(), 0, layers, 0, index);
-            System.arraycopy(solution.getArchitecture(), index + 1, layers,
+            System.arraycopy(solution.getLayers(), 0, layers, 0, index);
+            System.arraycopy(solution.getLayers(), index + 1, layers,
                     index, solution.getNumberOfLayers() - index - 1);
 
             IActivation[] activationsArr = new IActivation[solution.getActivations().length - 1];
@@ -86,7 +86,8 @@ public class SimpleMutation implements Mutation {
             solution.setArchitecture(layers, activationsArr);
         }
 
-        double[] weights = getWeights(calculateNumberOfWeights(solution.getArchitecture()), createWeightMatrices(solution.getArchitecture()));
+        double[] weights = getWeights(
+                calculateNumberOfWeights(solution.getLayers()), createWeightMatrices(solution.getLayers()));
         solution.setWeights(weights);
         return solution;
     }

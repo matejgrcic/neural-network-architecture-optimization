@@ -1,9 +1,6 @@
 package hr.fer.zemris.nnao.neuralNetwork.activations;
 
 public class ActivationFunctions {
-    private static final String IdentityStringRepresentation = "Iden";
-    private static final String ReLuStringRepresentation = "ReLU";
-    private static final String SigmoidStringRepresentation = "Sigm";
 
     public static IActivation Identity = new IActivation() {
         @Override
@@ -14,11 +11,6 @@ public class ActivationFunctions {
         @Override
         public double calculateFirstDerivative(double x) {
             return 1.;
-        }
-
-        @Override
-        public String getStringRepresentation() {
-            return IdentityStringRepresentation;
         }
 
         @Override
@@ -39,11 +31,6 @@ public class ActivationFunctions {
         }
 
         @Override
-        public String getStringRepresentation() {
-            return ReLuStringRepresentation;
-        }
-
-        @Override
         public String toString() {
             return "ReLU";
         }
@@ -58,11 +45,6 @@ public class ActivationFunctions {
         @Override
         public double calculateFirstDerivative(double x) {
             return calculateValue(x) * (1. - calculateValue(x));
-        }
-
-        @Override
-        public String getStringRepresentation() {
-            return SigmoidStringRepresentation;
         }
 
         @Override

@@ -2,6 +2,7 @@ package hr.fer.zemris.nnao.bp;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.datasets.DatasetUtils;
+import hr.fer.zemris.nnao.neuralNetwork.INeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.activations.ActivationFunctions;
 import hr.fer.zemris.nnao.neuralNetwork.activations.IActivation;
@@ -14,7 +15,7 @@ public class BPTest {
     // PROOF OF CONCEPT!
     //OVO DODE DO mse od 98 na training setu
     public static void main(String[] args ) throws IOException{
-        NeuralNetwork nn = new NeuralNetwork(
+        INeuralNetwork nn = new NeuralNetwork(
                 new int[] {2, 120,1},
                 new IActivation[] {ActivationFunctions.Identity,ActivationFunctions.ReLU, ActivationFunctions.ReLU}
         );

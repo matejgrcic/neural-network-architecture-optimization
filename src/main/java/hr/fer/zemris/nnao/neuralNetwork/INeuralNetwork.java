@@ -11,4 +11,6 @@ public interface INeuralNetwork {
     RealMatrix[] getWeightsMatrix();
     void setWeights(double[] weightsArray);
     void setWeights(RealMatrix[] weights);
+    int getWeightsNumber();
+    double[][] getOutputOfLayers();
 }

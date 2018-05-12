@@ -2,6 +2,7 @@ package hr.fer.zemris.nnao.geneticAlgorithms.evaluators;
 
 import hr.fer.zemris.nnao.datasets.DatasetEntry;
 import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
+import hr.fer.zemris.nnao.neuralNetwork.INeuralNetwork;
 import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.swarmAlgorithms.AlgorithmPSO;
 
@@ -43,7 +44,7 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
 
     @Override
     public double evaluateSolution(Solution solution) {
-        NeuralNetwork nn = new NeuralNetwork(solution.getArchitecture(), solution.getActivations());
+        INeuralNetwork nn = new NeuralNetwork(solution.getLayers(), solution.getActivations());
         nn.setWeights(solution.getWeights());
         double[] lowerBound = createArray(nn.getWeightsNumber(), -5.12);
         double[] upperBound = createArray(nn.getWeightsNumber(), 5.12);
@@ -51,20 +52,14 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
         double[] upperSpeed = createArray(nn.getWeightsNumber(), -2.);
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
-//        Function<double[], Double> particleEvaluator = t -> {
-//            nn.setWeights(t);
-//            double sum = 0.;
-//            for (DatasetEntry d : trainingSet) {
-//                sum += Math.pow(nn.forward(d.getInput())[0] - d.getOutput()[0], 2.);
-//            }
-//            return sum / trainingSet.size();
-//        };
 
         Function<double[], Double> particleEvaluator = createEvaluator(nn, trainingSet);
         Function<double[], Double> solutionEvaluator = createEvaluator(nn, validationSet);
         double bestFitness = Double.MAX_VALUE;
         double[] bestWeights = null;
-        AlgorithmPSO pso = new AlgorithmPSO(populationSize, nn.getWeightsNumber(), lowerBound, upperBound, lowerSpeed, upperSpeed);
+        AlgorithmPSO pso = new AlgorithmPSO(populationSize, nn.getWeightsNumber(),
+                lowerBound, upperBound, lowerSpeed, upperSpeed);
+
         for (int i = 0; i < maxTrys; ++i) {
             double[] weights = pso.run(particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations);
             solution.setWeights(weights);
@@ -91,7 +86,7 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
         return array;
     }
 
-    private static Function<double[], Double> createEvaluator(NeuralNetwork nn, List<DatasetEntry> dataset) {
+    private static Function<double[], Double> createEvaluator(INeuralNetwork nn, List<DatasetEntry> dataset) {
         return t -> {
             nn.setWeights(t);
             double sum = 0.;
