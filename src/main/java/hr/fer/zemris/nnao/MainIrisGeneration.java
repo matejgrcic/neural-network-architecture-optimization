@@ -58,7 +58,7 @@ public class MainIrisGeneration {
         List<DatasetEntry> trainingAndValidationDataset = dataset.subList(0, index);
         List<DatasetEntry> testDataset = dataset.subList(index, dataset.size());
 
-        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
+        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta, true);
 
         OutputStream os = Files.newOutputStream(Paths.get("./iris_result.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 

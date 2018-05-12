@@ -10,8 +10,12 @@ import java.util.List;
 
 public class GenerationGA extends AbstractGA {
 
-    public GenerationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision, double solutionDelta) {
+    private boolean useElitism;
+
+    public GenerationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision, double solutionDelta, boolean useElitism) {
         super(populationSize, maxIterations, desiredFitness, desiredPrecision, solutionDelta);
+
+        this.useElitism = useElitism;
     }
 
 
@@ -20,8 +24,10 @@ public class GenerationGA extends AbstractGA {
         Solution[] parents = selection.selectParents(population);
 
         List<Solution> nextGeneration = new ArrayList<>(populationSize);
-        nextGeneration.add(parents[0]);
-        nextGeneration.add(parents[1]);
+        if(useElitism) {
+            nextGeneration.add(parents[0]);
+            nextGeneration.add(parents[1]);
+        }
 
         while (nextGeneration.size() < populationSize) {
             Solution child = crossover.doCrossover(parents[0], parents[1]);
