@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static hr.fer.zemris.nnao.neuralNetwork.NNUtil.*;
+
 public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
 
     private List<DatasetEntry> trainingSet;
@@ -49,7 +51,7 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
         double[] lowerBound = createArray(nn.getWeightsNumber(), -5.12);
         double[] upperBound = createArray(nn.getWeightsNumber(), 5.12);
         double[] lowerSpeed = createArray(nn.getWeightsNumber(), -2.);
-        double[] upperSpeed = createArray(nn.getWeightsNumber(), -2.);
+        double[] upperSpeed = createArray(nn.getWeightsNumber(), 2.);
 
         BiFunction<Double, Double, Boolean> comparator = (t, u) -> Math.abs(t) > Math.abs(u);
 
@@ -61,9 +63,18 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
                 lowerBound, upperBound, lowerSpeed, upperSpeed);
 
         for (int i = 0; i < maxTrys; ++i) {
-            double[] weights = pso.run(particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations);
+            double[][] initialWeights = new double[populationSize][];
+            for(int j=0;j<populationSize;++j) {
+                initialWeights[j] = getWeights(
+                        calculateNumberOfWeights(solution.getLayers()), createWeightMatrices(solution.getLayers())
+                );
+            }
+            double[] weights = pso.run(
+                    particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations, initialWeights
+            );
             solution.setWeights(weights);
             double fitness = solutionEvaluator.apply(weights);
+            System.out.println(fitness);
             if (Math.abs(fitness) < bestFitness) {
                 bestFitness = Math.abs(fitness);
                 bestWeights = weights;

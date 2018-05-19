@@ -49,7 +49,7 @@ public class MainRasting {
 
         List<DatasetEntry> dataset = DatasetUtils.createRastring2DDataset();
 
-        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
+        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
 
         ga.addObserver(new ConsoleLoggerObserver());
 

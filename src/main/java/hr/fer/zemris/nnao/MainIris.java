@@ -7,6 +7,7 @@ import hr.fer.zemris.nnao.geneticAlgorithms.EliminationGA;
 import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.AbstractPopulationEvaluator;
+import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.BPPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
@@ -16,7 +17,6 @@ import hr.fer.zemris.nnao.neuralNetwork.NeuralNetwork;
 import hr.fer.zemris.nnao.observers.evaluators.LoggerEvaluationObserver;
 import hr.fer.zemris.nnao.observers.ga.ConsoleLoggerObserver;
 import hr.fer.zemris.nnao.observers.ga.FileLoggerObserver;
-import hr.fer.zemris.nnao.observers.ga.GraphDataObserver;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class MainIris {
     public static final int maxIter = 50;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
-    public static final int maxLayerSize = 80;
+    public static final int maxLayerSize = 100;
     public static final int minLayerSize = 40;
     public static final int inputSize = 4;
     public static final int outputSize = 1;
@@ -43,13 +43,13 @@ public class MainIris {
     public static final double desiredPrecision = 1e-5;
     public static final boolean selectDuplicates = false;
 
-    public static final double weightsFactor = 1E-4;
-    public static final double layersFactor = 1E-2;
+    public static final double weightsFactor = 1E-5 ;
+    public static final double layersFactor = 1E-3;
     public static final double errorFactor = 1.;
-    public static final double addLayerP = 0.1;
-    public static final double removeLayerP = 0.1;
-    public static final double changeLayerP = 0.2;
-    public static final double changeActivationP = 0.2;
+    public static final double addLayerP = 0.3;
+    public static final double removeLayerP = 0.3;
+    public static final double changeLayerP = 0.3;
+    public static final double changeActivationP = 0.3;
 
 
     public static void main(String[] args) throws IOException {
@@ -59,14 +59,15 @@ public class MainIris {
         List<DatasetEntry> trainingAndValidationDataset = dataset.subList(0,index);
         List<DatasetEntry> testDataset = dataset.subList(index,dataset.size());
 
-        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta);
+        AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
         OutputStream os = Files.newOutputStream(Paths.get("./iris_graph_data.csv"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
 
         AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(trainingAndValidationDataset, 0.83, 50,
-                100, desiredError, desiredPrecision, 3, errorFactor, weightsFactor, layersFactor);
+                150, desiredError, desiredPrecision, 5, errorFactor, weightsFactor, layersFactor);
+        AbstractPopulationEvaluator ev = new BPPopulationEvaluator(trainingAndValidationDataset,1E-8,10_000,desiredError,desiredPrecision,30,0.83,3,errorFactor,weightsFactor,layersFactor);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution solution = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
@@ -75,6 +76,7 @@ public class MainIris {
                         changeLayerP, addLayerP, removeLayerP, changeActivationP),
                 new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
                 evaluation
+//                ev
         );
 
         os.flush();

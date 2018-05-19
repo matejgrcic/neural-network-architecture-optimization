@@ -8,7 +8,6 @@ import hr.fer.zemris.nnao.geneticAlgorithms.Solution;
 import hr.fer.zemris.nnao.geneticAlgorithms.crossovers.SimpleCrossover;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.AbstractPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.BPPopulationEvaluator;
-import hr.fer.zemris.nnao.geneticAlgorithms.evaluators.PSOPopulationEvaluator;
 import hr.fer.zemris.nnao.geneticAlgorithms.generators.PopulationGenerator;
 import hr.fer.zemris.nnao.geneticAlgorithms.mutations.SimpleMutation;
 import hr.fer.zemris.nnao.geneticAlgorithms.selections.TournamentSelection;
@@ -58,7 +57,7 @@ public class MainIrisGeneration {
         List<DatasetEntry> trainingAndValidationDataset = dataset.subList(0, index);
         List<DatasetEntry> testDataset = dataset.subList(index, dataset.size());
 
-        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision, solutionDelta, true);
+        AbstractGA ga = new GenerationGA(populationSize, maxIter, desiredFitness, desiredPrecision, true);
 
         OutputStream os = Files.newOutputStream(Paths.get("./iris_result.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 

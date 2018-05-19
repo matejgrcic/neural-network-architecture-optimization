@@ -12,8 +12,8 @@ public class GenerationGA extends AbstractGA {
 
     private boolean useElitism;
 
-    public GenerationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision, double solutionDelta, boolean useElitism) {
-        super(populationSize, maxIterations, desiredFitness, desiredPrecision, solutionDelta);
+    public GenerationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision, boolean useElitism) {
+        super(populationSize, maxIterations, desiredFitness, desiredPrecision);
 
         this.useElitism = useElitism;
     }

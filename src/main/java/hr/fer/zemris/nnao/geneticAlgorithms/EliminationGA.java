@@ -8,8 +8,8 @@ import hr.fer.zemris.nnao.geneticAlgorithms.selections.Selection;
 public class EliminationGA extends AbstractGA {
 
 
-    public EliminationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision, double solutionDelta) {
-        super(populationSize, maxIterations, desiredFitness, desiredPrecision, solutionDelta);
+    public EliminationGA(int populationSize, int maxIterations, double desiredFitness, double desiredPrecision) {
+        super(populationSize, maxIterations, desiredFitness, desiredPrecision);
     }
 
 
