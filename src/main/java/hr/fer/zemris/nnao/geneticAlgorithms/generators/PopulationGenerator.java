@@ -35,7 +35,7 @@ public class PopulationGenerator implements IPopulationGenerator {
     public List<Solution> createInitialPopulation(int populationSize) {
         List<Solution> population = new ArrayList<>(populationSize);
         for (int i = 0; i < populationSize; ++i) {
-           population.add(createIndividual());
+            population.add(createIndividual());
         }
 
         return population;
@@ -44,9 +44,9 @@ public class PopulationGenerator implements IPopulationGenerator {
     @Override
     public Solution createIndividual() {
         int numberOfLayers = rand.nextInt(maxLayersNum - minLayersNum + 1) + minLayersNum;
-        int[] architecture = new int[numberOfLayers];
+        int[] layers = new int[numberOfLayers];
         for (int j = 0; j < numberOfLayers; ++j) {
-            architecture[j] = rand.nextInt(maxLayerSize - minLayerSize + 1) + minLayerSize;
+            layers[j] = rand.nextInt(maxLayerSize - minLayerSize + 1) + minLayerSize;
         }
         IActivation[] activations = new IActivation[numberOfLayers];
         activations[0] = ActivationFunctions.Identity;
@@ -57,10 +57,9 @@ public class PopulationGenerator implements IPopulationGenerator {
             activations[j] = allActivations[rand.nextInt(allActivations.length)];
         }
 
-        architecture[0] = inputLayerSize;
-        architecture[architecture.length - 1] = outputLayerSize;
+        layers[0] = inputLayerSize;
+        layers[layers.length - 1] = outputLayerSize;
 
-        double[] weights = createRandomArray(calculateNumberOfWeights(architecture));
-        return new Solution(activations, numberOfLayers, architecture, weights);
+        return new Solution(activations, layers, numberOfLayers);
     }
 }

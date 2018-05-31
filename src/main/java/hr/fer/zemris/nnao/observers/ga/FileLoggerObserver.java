@@ -17,12 +17,9 @@ public class FileLoggerObserver implements GAObserver {
 
     @Override
     public void update(AbstractGA geneticAlgorithm) {
-        logger.setLength(0);
+        logger.delete(0, logger.length());
 
-        logger.append("#Iteration: "+geneticAlgorithm.getCurrentIteration()+"\n");
-        logger.append("\tBest fitness: "+geneticAlgorithm.getBestFitness()+"\n");
-        logger.append("\tBest architecture: "+geneticAlgorithm.getBestSolution().toString()+"\n");
-        logger.append("\tAverage population fitness: "+geneticAlgorithm.getAverageFitness()+"\n");
+        logger.append(geneticAlgorithm.getBestFitness() + "," + geneticAlgorithm.getAverageFitness()+"\n");
 
         try {
             outputStream.write(logger.toString().getBytes());

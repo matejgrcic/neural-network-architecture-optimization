@@ -30,7 +30,7 @@ public class MainIris {
 
     public static final double solutionDelta = 0.01;
     public static final int populationSize = 12;
-    public static final int maxIter = 50;
+    public static final int maxIter = 70;
     public static final int minLayersNum = 3;
     public static final int maxLayersNum = 5;
     public static final int maxLayerSize = 100;
@@ -46,10 +46,10 @@ public class MainIris {
     public static final double weightsFactor = 1E-5 ;
     public static final double layersFactor = 1E-3;
     public static final double errorFactor = 1.;
-    public static final double addLayerP = 0.3;
-    public static final double removeLayerP = 0.3;
-    public static final double changeLayerP = 0.3;
-    public static final double changeActivationP = 0.3;
+    public static final double addLayerP = 0.4;
+    public static final double removeLayerP = 0.4;
+    public static final double changeLayerP = 0.4;
+    public static final double changeActivationP = 0.4;
 
 
     public static void main(String[] args) throws IOException {
@@ -60,14 +60,13 @@ public class MainIris {
         List<DatasetEntry> testDataset = dataset.subList(index,dataset.size());
 
         AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
-        OutputStream os = Files.newOutputStream(Paths.get("./iris_graph_data.csv"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        OutputStream os = Files.newOutputStream(Paths.get("./iris_graph_data.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
         ga.addObserver(new ConsoleLoggerObserver());
         ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
 
         AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(trainingAndValidationDataset, 0.83, 50,
                 150, desiredError, desiredPrecision, 5, errorFactor, weightsFactor, layersFactor);
-        AbstractPopulationEvaluator ev = new BPPopulationEvaluator(trainingAndValidationDataset,1E-8,10_000,desiredError,desiredPrecision,30,0.83,3,errorFactor,weightsFactor,layersFactor);
         evaluation.addObserver(new LoggerEvaluationObserver());
         Solution solution = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
@@ -76,7 +75,6 @@ public class MainIris {
                         changeLayerP, addLayerP, removeLayerP, changeActivationP),
                 new TournamentSelection(numberOfSelectionCandidates, selectDuplicates),
                 evaluation
-//                ev
         );
 
         os.flush();

@@ -8,16 +8,16 @@ import java.util.Objects;
 public class Solution {
 
     private IActivation[] activations;
-    private int numberOfLayers;
     private int[] layers;
+    private int numberOfLayers;
+
     private double[] weights;
     private double fitness;
 
-    public Solution(IActivation[] activations, int numberOfLayers, int[] layers, double[] weights) {
+    public Solution(IActivation[] activations, int[] layers, int numberOfLayers) {
         this.activations = activations;
-        this.numberOfLayers = numberOfLayers;
         this.layers = layers;
-        this.weights = weights;
+        this.numberOfLayers = numberOfLayers;
     }
 
     public void setWeights(double[] weights) {
@@ -39,6 +39,14 @@ public class Solution {
     public void setArchitecture(int[] layers, IActivation[] activations) {
         this.layers = layers;
         this.activations = activations;
+    }
+
+    public void setLayer(int layer, int index) {
+        layers[index] = layer;
+    }
+
+    public  void setActivation(IActivation activation, int index) {
+        activations[index] = activation;
     }
 
     public void setNumberOfLayers(int numberOfLayers) {

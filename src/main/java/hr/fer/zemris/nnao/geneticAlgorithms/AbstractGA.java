@@ -12,12 +12,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static hr.fer.zemris.nnao.geneticAlgorithms.GAUtil.solutionComparator;
+
 public abstract class AbstractGA {
 
     protected List<Solution> population;
     protected int populationSize;
     protected Solution bestSolution;
-    private Comparator<Solution> solutionComparator = Comparator.comparingDouble(s -> s.getFitness());
 
     protected int currentIteration;
     protected int maxIterations;
@@ -36,14 +37,14 @@ public abstract class AbstractGA {
         this.desiredPrecision = desiredPrecision;
     }
 
-    public Solution run(IPopulationGenerator populationGenerator, Crossover crossover, Mutation mutation, Selection selection, PopulationEvaluator populationEvaluator) {
+    public Solution run(IPopulationGenerator populationGenerator, Crossover crossover, Mutation mutation,
+                        Selection selection, PopulationEvaluator populationEvaluator) {
 
         fillInitialPopulation(populationGenerator, populationEvaluator);
         calculateAverageFitness();
         notifyObservers();
 
         while (Math.abs(bestFitness - desiredFitness) > desiredPrecision && currentIteration < maxIterations) {
-
             currentIteration++;
             calculateAverageFitness();
             Collections.sort(population, solutionComparator);
@@ -55,8 +56,8 @@ public abstract class AbstractGA {
         return bestSolution;
     }
 
-    //treba napraviti novu populaciju i vratiti bes
-    protected abstract void createNextPopulation(Selection selection, Crossover crossover, Mutation mutation, PopulationEvaluator populationEvaluator);
+    protected abstract void createNextPopulation(Selection selection, Crossover crossover,
+                                                 Mutation mutation, PopulationEvaluator populationEvaluator);
 
     protected void calculateAverageFitness() {
         double total = 0.;

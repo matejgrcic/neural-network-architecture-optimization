@@ -47,7 +47,6 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
     @Override
     public double evaluateSolution(Solution solution) {
         INeuralNetwork nn = new NeuralNetwork(solution.getLayers(), solution.getActivations());
-        nn.setWeights(solution.getWeights());
         double[] lowerBound = createArray(nn.getWeightsNumber(), -5.12);
         double[] upperBound = createArray(nn.getWeightsNumber(), 5.12);
         double[] lowerSpeed = createArray(nn.getWeightsNumber(), -2.);
@@ -63,18 +62,12 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
                 lowerBound, upperBound, lowerSpeed, upperSpeed);
 
         for (int i = 0; i < maxTrys; ++i) {
-            double[][] initialWeights = new double[populationSize][];
-            for(int j=0;j<populationSize;++j) {
-                initialWeights[j] = getWeights(
-                        calculateNumberOfWeights(solution.getLayers()), createWeightMatrices(solution.getLayers())
-                );
-            }
+            double[][] initialWeights = createInitialWeights(populationSize, solution.getLayers());
             double[] weights = pso.run(
                     particleEvaluator, comparator, desiredError, desiredPrecision, maxIterations, initialWeights
             );
             solution.setWeights(weights);
             double fitness = solutionEvaluator.apply(weights);
-            System.out.println(fitness);
             if (Math.abs(fitness) < bestFitness) {
                 bestFitness = Math.abs(fitness);
                 bestWeights = weights;
@@ -106,5 +99,15 @@ public class PSOPopulationEvaluator extends AbstractPopulationEvaluator {
             }
             return sum / dataset.size();
         };
+    }
+
+    private static double[][] createInitialWeights(int populationSize, int[] layers) {
+        double[][] initialWeights = new double[populationSize][];
+        for(int j=0;j<populationSize;++j) {
+            initialWeights[j] = getWeights(
+                    calculateNumberOfWeights(layers), createWeightMatrices(layers)
+            );
+        }
+        return initialWeights;
     }
 }

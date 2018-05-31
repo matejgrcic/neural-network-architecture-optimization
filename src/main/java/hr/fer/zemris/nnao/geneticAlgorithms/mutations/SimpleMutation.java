@@ -38,19 +38,16 @@ public class SimpleMutation implements Mutation {
 
     @Override
     public Solution mutate(Solution solution) {
-
-        // mutate layers
         if (rand.nextDouble() < layerSizeMutationProbability) {
             int index = rand.nextInt(solution.getLayers().length - 2) + 1;
-            solution.getLayers()[index] = createRandomLayer(minLayerSize, maxLayerSize);
-        }
-        // mutate activations
-        if (rand.nextDouble() < activationMutationProbability) {
-            int index = rand.nextInt(solution.getActivations().length);
-            solution.getActivations()[index] = createRandomActivation();
+            solution.setLayer(createRandomLayer(minLayerSize, maxLayerSize), index);
         }
 
-        // add layer
+        if (rand.nextDouble() < activationMutationProbability) {
+            int index = rand.nextInt(solution.getActivations().length);
+            solution.setActivation(createRandomActivation(), index);
+        }
+
         if (solution.getNumberOfLayers() < maxLayerNumber && rand.nextDouble() < layerAdditionMutationProbability) {
             int index = rand.nextInt(solution.getLayers().length - 2) + 1;
             int[] layers = new int[solution.getNumberOfLayers() + 1];
@@ -69,7 +66,6 @@ public class SimpleMutation implements Mutation {
             solution.setArchitecture(layers, activationsArr);
         }
 
-        // remove layer
         if (solution.getNumberOfLayers() > minLayerNumber && rand.nextDouble() < layerRemoveMutationProbability) {
             int index = rand.nextInt(solution.getLayers().length - 2) + 1;
             int[] layers = new int[solution.getNumberOfLayers() - 1];
@@ -86,9 +82,6 @@ public class SimpleMutation implements Mutation {
             solution.setArchitecture(layers, activationsArr);
         }
 
-        double[] weights = getWeights(
-                calculateNumberOfWeights(solution.getLayers()), createWeightMatrices(solution.getLayers()));
-        solution.setWeights(weights);
         return solution;
     }
 
