@@ -29,7 +29,6 @@ public class AlgorithmPSO {
     public double[] run(Function<double[], Double> particleEvaluator,
                         BiFunction<Double, Double, Boolean> valueComparator,
                         double desiredError, double desiredPrecision, long maxIter, double[][]initialPositions) {
-//        double[][] particlesPositions = initializePopulation(minPosition, maxPosition);
         double[][] particlesPositions = initialPositions;
         double[][] particlesVelocities = initializePopulation(minVelocity, maxVelocity);
         double[] particleValue = new double[populationSize];

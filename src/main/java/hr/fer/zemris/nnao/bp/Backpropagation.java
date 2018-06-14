@@ -25,7 +25,6 @@ public class Backpropagation extends AbstractBackpropagation {
                 desiredError, desiredPrecision, neuralNetwork, batchSize);
     }
 
-    //vraca validation set mse
     public double run() {
         List<DatasetEntry>[] batches = createBatches(batchSize, trainingSet);
         int[] nnArchitecture = neuralNetwork.getNeuralNetworkArchitecture();
@@ -41,13 +40,11 @@ public class Backpropagation extends AbstractBackpropagation {
                 neuralNetwork.setWeights(weights);
             }
             trainingMSE = calculateMse(totalErrorByNeuron,trainingSet.size());
-            System.out.println("Iter : " + currentIteration + " MSError je: " + trainingMSE);
 
             RealVector validationMse = fillErrorVector(nnArchitecture[nnArchitecture.length-1],validationSet, neuralNetwork);
 
             double lastIterValMSE = validationMSE;
             validationMSE = calculateMse(validationMse,validationSet.size());
-            System.out.println("Validation error: " + validationMSE);
 
             if (lastIterValMSE <= validationMSE && currentIteration > maxIteration / 2) {
                 validationMSE = lastIterValMSE;

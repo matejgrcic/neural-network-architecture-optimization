@@ -48,12 +48,12 @@ public class BPPopulationEvaluator extends AbstractPopulationEvaluator {
         double bestFitness = Double.MAX_VALUE;
         RealMatrix[] bestWeights = null;
         NeuralNetwork nn = new NeuralNetwork(solution.getLayers(), solution.getActivations());
-        for(int i = 0; i<maxTrys; ++i) {
+        for (int i = 0; i < maxTrys; ++i) {
             nn.setWeights(solution.getWeights());
             Backpropagation bp = new Backpropagation(trainingDataset, validationDataset,
                     learningRate, maxIteration, desiredError, desiredPrecision, nn, batchSize);
-            double fitness =  bp.run();
-            if(fitness < bestFitness) {
+            double fitness = bp.run();
+            if (fitness < bestFitness) {
                 bestFitness = fitness;
                 bestWeights = nn.getWeightsMatrix();
             }

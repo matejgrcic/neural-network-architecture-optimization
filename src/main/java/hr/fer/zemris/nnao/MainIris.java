@@ -28,7 +28,6 @@ import java.util.List;
 
 public class MainIris {
 
-    public static final double solutionDelta = 0.01;
     public static final int populationSize = 12;
     public static final int maxIter = 70;
     public static final int minLayersNum = 3;
@@ -43,13 +42,18 @@ public class MainIris {
     public static final double desiredPrecision = 1e-5;
     public static final boolean selectDuplicates = false;
 
-    public static final double weightsFactor = 1E-5 ;
+    public static final double weightsFactor = 1E-5;
     public static final double layersFactor = 1E-3;
     public static final double errorFactor = 1.;
     public static final double addLayerP = 0.4;
     public static final double removeLayerP = 0.4;
     public static final double changeLayerP = 0.4;
     public static final double changeActivationP = 0.4;
+
+    public static final int PSOPopulationSize = 50;
+    public static final int PSOMaxIter = 150;
+    public static final int PSOMaxTrys = 5;
+
 
 
     public static void main(String[] args) throws IOException {
@@ -58,16 +62,20 @@ public class MainIris {
         int index = (int) Math.round(dataset.size() * 0.85);
         List<DatasetEntry> trainingAndValidationDataset = dataset.subList(0,index);
         List<DatasetEntry> testDataset = dataset.subList(index,dataset.size());
-
         AbstractGA ga = new EliminationGA(populationSize, maxIter, desiredFitness, desiredPrecision);
         OutputStream os = Files.newOutputStream(Paths.get("./iris_graph_data.txt"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
         ga.addObserver(new ConsoleLoggerObserver());
-        ga.addObserver(new FileLoggerObserver(new BufferedOutputStream(os)));
 
-        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(trainingAndValidationDataset, 0.83, 50,
-                150, desiredError, desiredPrecision, 5, errorFactor, weightsFactor, layersFactor);
+        AbstractPopulationEvaluator evaluation = new PSOPopulationEvaluator(
+                trainingAndValidationDataset, 0.83,
+                PSOPopulationSize, PSOMaxIter,
+                desiredError, desiredPrecision,
+                PSOMaxTrys, errorFactor,
+                weightsFactor, layersFactor);
         evaluation.addObserver(new LoggerEvaluationObserver());
+
+
         Solution solution = ga.run(
                 new PopulationGenerator(minLayersNum, maxLayersNum, minLayerSize, maxLayerSize, inputSize, outputSize),
                 new SimpleCrossover(),
@@ -80,22 +88,9 @@ public class MainIris {
         os.flush();
         os.close();
 
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < solution.getNumberOfLayers(); ++i) {
-            sb.append(solution.getLayers()[i]);
-            sb.append(solution.getActivations()[i] + " ");
-        }
-        System.out.println(sb.toString() + "Error: " + solution.getFitness());
-
-
         INeuralNetwork nn = new NeuralNetwork(solution.getLayers(), solution.getActivations());
         nn.setWeights(solution.getWeights());
         System.out.println("Broj pogresaka najbolje: " + calculateMisses(testDataset, nn));
-
-        List<Solution> population = ga.getPopulation();
-        for (int i = 0; i < population.size(); ++i) {
-            System.out.println((i + 1) + ". " + population.get(i).toString() + " err: " + population.get(i).getFitness());
-        }
     }
 
     private static int calculateMisses(List<DatasetEntry> dataset, INeuralNetwork nn) {
