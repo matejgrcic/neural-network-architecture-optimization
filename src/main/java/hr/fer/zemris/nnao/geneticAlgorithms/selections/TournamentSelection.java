@@ -20,6 +20,12 @@ public class TournamentSelection implements Selection {
 
     @Override
     public Solution[] selectParents(List<Solution> population) {
+        Solution firstParent = selectParent(population);
+        Solution secondParent = selectParent(population);
+        return new Solution[]{firstParent, secondParent};
+    }
+
+    private Solution selectParent(List<Solution> population) {
         List<Solution> selected = new ArrayList<>(numberOfCandidates);
         List<Solution> populationCopy = new ArrayList<>(population);
         while (selected.size() < numberOfCandidates) {
@@ -30,6 +36,6 @@ public class TournamentSelection implements Selection {
             selected.add(candidate);
         }
         Collections.sort(selected, solutionComparator);
-        return new Solution[]{selected.get(0), selected.get(1)};
+        return selected.get(0);
     }
 }
