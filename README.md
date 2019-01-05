@@ -11,7 +11,7 @@ This project implements an algorithm for evolving architecture of artificial neu
 - [PSO Algorithm](https://en.wikipedia.org/wiki/Particle_swarm_optimization)
 - [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm)
 
-## TODO
+## TODO - for v2
 - Refactor the way of coding NN's architecture to GA individual
 - Optimize performances
 - Update project to Java 11
