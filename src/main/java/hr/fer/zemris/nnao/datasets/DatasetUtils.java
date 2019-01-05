@@ -12,6 +12,9 @@ import java.util.function.Function;
 
 public class DatasetUtils {
 
+    public static final String IRIS_DATASET = "./resources/datasets/iris.csv";
+    public static final String DELIMITER = ",";
+
     public static List<DatasetEntry> createDataset(Path path, String delimiter,
                                                    Function<String[], DatasetEntry> recordCreator) throws IOException {
         Scanner sc = new Scanner(Files.newInputStream(path));
@@ -21,46 +24,9 @@ public class DatasetUtils {
             DatasetEntry record = recordCreator.apply(lineData);
             dataset.add(record);
         }
-
+        sc.close();
         return dataset;
     }
-
-    public static List<DatasetEntry> createRastring2DDataset() throws IOException {
-        Function<String[], DatasetEntry> creator = u -> {
-            double[] input = new double[]{Double.parseDouble(u[0]), Double.parseDouble(u[1])};
-            double[] output = new double[]{Double.parseDouble(u[2])};
-            return new DatasetEntry(input, output);
-        };
-        return createDataset(Paths.get("./rastring2D.csv"), ",", creator);
-    }
-
-    public static List<DatasetEntry> createSinXDataset() throws IOException {
-        Function<String[], DatasetEntry> creator = u -> {
-            double[] input = new double[]{Double.parseDouble(u[0])};
-            double[] output = new double[]{Double.parseDouble(u[1])};
-            return new DatasetEntry(input, output);
-        };
-        return createDataset(Paths.get("./sinx.csv"), ",", creator);
-    }
-
-    public static List<DatasetEntry> createSinXDatasetNormalized() throws IOException {
-        Function<String[], DatasetEntry> creator = u -> {
-            double[] input = new double[]{Double.parseDouble(u[0])};
-            double[] output = new double[]{Double.parseDouble(u[1])};
-            return new DatasetEntry(input, output);
-        };
-        return createDataset(Paths.get("./sinxN01.csv"), ",", creator);
-    }
-
-    public static List<DatasetEntry> createLinear() throws IOException {
-        Function<String[], DatasetEntry> creator = u -> {
-            double[] input = new double[]{Double.parseDouble(u[0])};
-            double[] output = new double[]{Double.parseDouble(u[1])};
-            return new DatasetEntry(input, output);
-        };
-        return createDataset(Paths.get("./linear.csv"), ",", creator);
-    }
-
 
     public static List<DatasetEntry> createIrisDataset() throws IOException {
         Function<String[], DatasetEntry> creator = u -> {
@@ -78,7 +44,7 @@ public class DatasetUtils {
 
             return new DatasetEntry(input, output);
         };
-        List<DatasetEntry> dataset = createDataset(Paths.get("./iris.csv"), ",", creator);
+        List<DatasetEntry> dataset = createDataset(Paths.get(IRIS_DATASET), DELIMITER, creator);
         Collections.shuffle(dataset);
         return dataset;
     }
