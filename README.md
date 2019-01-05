@@ -6,7 +6,7 @@ This project implements an algorithm for evolving architecture of artificial neu
 
 ## Links
 
--[Finding Optimal Neural Network Architecture Using Genetic Algorithms](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.447.662&rep=rep1&type=pdf)
+- [Finding Optimal Neural Network Architecture Using Genetic Algorithms](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.447.662&rep=rep1&type=pdf)
 - [Artificial Neural Network](https://en.wikipedia.org/wiki/Artificial_neural_network)
 - [PSO Algorithm](https://en.wikipedia.org/wiki/Particle_swarm_optimization)
 - [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm)
